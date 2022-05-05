@@ -1,0 +1,19 @@
+import React from "react";
+
+const Advert = ({ title, img, price }) => {
+  return (
+    <div className="mx-2" type="button">
+      <img
+        src={img}
+        alt={title}
+        className="card-img-top border border-2 border-dark rounded-3"
+        style={{ width: "10rem", height: "10rem" }}
+      />
+      <div class="card-body text-center">
+        <p class="card-text">{title}</p>
+      </div>
+    </div>
+  );
+};
+
+export default Advert;
