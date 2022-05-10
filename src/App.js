@@ -6,6 +6,7 @@ import Register from "./components/Register";
 import PersonalInformation from "./components/PersonalInformation";
 import Messages from "./components/Messages";
 import Locations from "./components/Locations";
+import Favorite from "./components/Favorite";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="personal-information" element={<PersonalInformation />}/>
           <Route path="messages" element={<Messages />} />   
           <Route path="locations" element={<Locations />} />
+          <Route path="favorite" element={<Favorite />} />
         </Routes>
       </div>
     </div>

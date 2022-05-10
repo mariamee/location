@@ -8,7 +8,7 @@ const Locations = () => {
       <div>
         <form className="border border-dark rounded pe-5 py-2  mx-auto d-flex justify-content-between">
             <div><ARROW/></div>
-           <div className="text-center  h4">Mes Messages </div>
+           <div className="text-center  h4">Locations </div>
         </form>
       </div>
       <div className="py-5">
