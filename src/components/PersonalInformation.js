@@ -1,19 +1,27 @@
-
 import React from "react";
 import Select from "react-select";
 import { Link } from "react-router-dom";
-
 import { CITIES } from "../utils/constants";
+import { HEART_ICON, LOCATIONS, MESSAGES } from "../utils/icons";
 
-const Register = () => {
+const PersonalInformation = () => {
   return (
-    <div>
-      <h1 className="text-center">S'inscrire</h1>
+    <div className="p-5 py-5">
+      <form className="border border-dark p mb-5 h5 d-flex justify-content-around">
+    <div className="text-center"><HEART_ICON size={65}/>
+     <div>Messages</div> 
+    </div>
+    <div className="text-center"><MESSAGES/>
+     <div>Liste d'envies</div> 
+    </div>
+    <div className="text-center"><LOCATIONS/>
+     <div>Locations</div> 
+    </div>
+   
+      </form>
       <form className="border border-dark  rounded p-4">
-        <p className="text-danger small">
-          <small>* Remplir soigneusement les informations suivantes:</small>
-        </p>
-        <div className="d-flex gap-5 my-5">
+        <h3 className="text-center">Informations personnels</h3>
+        <div className="d-sm-flex gap-5 my-5">
           <div className="form-group flex-fill">
             <label htmlFor="lname">Nom</label>
             <input
@@ -64,17 +72,19 @@ const Register = () => {
             <Select options={CITIES} />
           </div>
         </div>
-        <div className="text-center pt-5">
-          <button type="submit" className="btn btn-success">
-            Créer mon compte
+        <div className="text-center">
+          <button type="submit" className="btn btn-info px-5">
+            Enregistrer
           </button>
-          <div className="my-4">
-            Vous avez déjà un compte? <Link to="/login">se connecter</Link>
-          </div>
+        </div>
+        <div className="text-center pt-3">
+          <button type="submit" className="btn btn-danger">
+            Supprimer mon compte
+          </button>
         </div>
       </form>
     </div>
   );
 };
 
-export default Register;
+export default PersonalInformation;

@@ -1,7 +1,20 @@
 export const CITIES = [
+  { value: "afourar", label: "Afourar" },
+  { value: "agadir", label: "Agadir" },
+  { value: "agdz", label: "Agdz" },
+  { value: "agourai", label: "Agourai" },
+  { value: "alhoceima", label: "Alhoceima"},
   { value: "arfoud", label: "Arfoud" },
-  { value: "tetouan", label: "Tetouan" },
-  { value: "casablanca", label: "Casablanca" },
+  { value: "berrechid", label: "Berrechid" },
+  { value: "bouskoura", label: "Bouskoura" },
+  { value: "chefchaouen", label: "Chefchaouen" },
+  { value: "dakhla", label: "Dakhla" },
+  { value: "eljadida", label: "El-Jadida" },
+  { value: "essaouira", label: "Essaouira" },
+  { value: "fes", label: "Fès" },
+  { value: "figuig", label: "Figuig" },
+  { value: "guelmim", label: "Guelmim" },
+  { value: "arfoud", label: "Arfoud" }, 
   { value: "rabat", label: "Rabat" },
 ];
 export const CATEGORIES = [

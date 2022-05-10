@@ -6,7 +6,7 @@ const Navbar = () => {
     <div className="d-flex justify-content-start align-items-center p-2 shadow bg-light ">
       <div className="me-auto d-flex align-items-center">
         <Link to="/" className="text-decoration-none text-black h3 my-2">
-          Mariame
+         LocationApp
         </Link>
       </div>
       <div>
