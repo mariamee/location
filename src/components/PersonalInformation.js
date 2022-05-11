@@ -8,16 +8,24 @@ const PersonalInformation = () => {
   return (
     <div className="p-5 py-5">
       <form className="border border-dark p mb-5 h5 d-flex justify-content-around">
-    <div className="text-center"><HEART_ICON size={65}/>
-     <div>Messages</div> 
-    </div>
-    <div className="text-center"><MESSAGES/>
-     <div>Liste d'envies</div> 
-    </div>
-    <div className="text-center"><LOCATIONS/>
-     <div>Locations</div> 
-    </div>
-   
+        <Link to="/favorite" style={{ textDecoration: "none" }}>
+          <div className="text-center">
+            <HEART_ICON size={65} />
+            <div className="text-dark">Liste d'envies</div>
+          </div>
+        </Link>
+        <Link to="/messages" style={{ textDecoration: "none" }}>
+          <div className="text-center">
+            <MESSAGES />
+            <div className="text-dark">Messages</div>
+          </div>
+        </Link>
+        <Link to="/location" style={{ textDecoration: "none" }}>
+          <div className="text-center">
+            <LOCATIONS />
+            <div className="text-dark">Locations</div>
+          </div>
+        </Link>
       </form>
       <form className="border border-dark  rounded p-4">
         <h3 className="text-center">Informations personnels</h3>

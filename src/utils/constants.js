@@ -135,6 +135,29 @@ export const POSTS = [
   },
 ];
 
+export const FAVORITS = [
+  {
+    id: 4,
+    title: "Peugeot 208",
+    price: "250",
+    img: "https://picsum.photos/300/302",
+  },
+
+  {
+    id: 6,
+    title: "BMW X5",
+    price: "100",
+    img: "https://picsum.photos/300/305",
+  },
+
+  {
+    id: 9,
+    title: "Peugeot 208",
+    price: "250",
+    img: "https://picsum.photos/300/302",
+  },
+];
+
 export const COMMENTS = [
   {
     id: 1,

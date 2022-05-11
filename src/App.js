@@ -6,8 +6,8 @@ import Register from "./components/Register";
 import PersonalInformation from "./components/PersonalInformation";
 import Messages from "./components/Messages";
 import Locations from "./components/Locations";
-import Favorite from "./components/Favorite";
 import Post from "components/Post";
+import Favorits from "components/Favorits";
 
 const App = () => {
   return (
@@ -25,7 +25,7 @@ const App = () => {
           <Route path="messages" element={<Messages />} />
           <Route path="locations" element={<Locations />} />
           <Route path="post/:id" element={<Post />} />
-          <Route path="favorite" element={<Favorite />} />
+          <Route path="favorite" element={<Favorits />} />
         </Routes>
       </div>
     </div>
