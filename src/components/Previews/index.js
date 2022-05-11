@@ -1,18 +1,18 @@
 import React from "react";
 import { POSTS } from "../../utils/constants";
-import Post from "./Post";
+import Preview from "./Preview";
 
-const Posts = () => {
+const Previews = () => {
   return (
     <div className="border border-dark rounded p-3 my-4">
       <h2>A louer</h2>
       <div className="d-flex flex-wrap">
         {POSTS?.map((post) => (
-          <Post key={post.id} {...post} />
+          <Preview key={post.id} {...post} />
         ))}
       </div>
     </div>
   );
 };
 
-export default Posts;
+export default Previews;

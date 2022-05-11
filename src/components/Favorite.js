@@ -1,6 +1,6 @@
 import React from "react";
 import Filter from "./Filter";
-import Posts from "./Posts";
+import Posts from "./Previews";
 
 const Favorite = () => {
   return (

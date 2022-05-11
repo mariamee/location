@@ -3,7 +3,7 @@ export const CITIES = [
   { value: "agadir", label: "Agadir" },
   { value: "agdz", label: "Agdz" },
   { value: "agourai", label: "Agourai" },
-  { value: "alhoceima", label: "Alhoceima"},
+  { value: "alhoceima", label: "Alhoceima" },
   { value: "arfoud", label: "Arfoud" },
   { value: "berrechid", label: "Berrechid" },
   { value: "bouskoura", label: "Bouskoura" },
@@ -14,7 +14,7 @@ export const CITIES = [
   { value: "fes", label: "Fès" },
   { value: "figuig", label: "Figuig" },
   { value: "guelmim", label: "Guelmim" },
-  { value: "arfoud", label: "Arfoud" }, 
+  { value: "arfoud", label: "Arfoud" },
   { value: "rabat", label: "Rabat" },
 ];
 export const CATEGORIES = [
@@ -133,4 +133,37 @@ export const POSTS = [
     price: "850",
     img: "https://picsum.photos/300/307",
   },
+];
+
+export const COMMENTS = [
+  {
+    id: 1,
+    user: {
+      name: "John Doe",
+      avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+    },
+    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod.",
+  },
+  {
+    id: 2,
+    user: {
+      name: "Mariame El Alaoui",
+      avatar: "https://randomuser.me/api/portraits/men/2.jpg",
+    },
+    body: "balbla blabla, test comment",
+  },
+  {
+    id: 3,
+    user: {
+      name: "Safae",
+      avatar: "https://randomuser.me/api/portraits/men/3.jpg",
+    },
+    body: "Hello everyone, test test test",
+  },
+];
+
+export const RENT_DURATION = [
+  { value: "1", label: "1 jour" },
+  { value: "7", label: "1 semaine" },
+  { value: "30", label: "1 mois" },
 ];
