@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useAuth from "hooks/useAuth";
  const NavbarPartner = () => {
        return(
-        <nav class="  d-flex  p-2 ml-2 shadow navbar navbar-expand-xl navbar-light bg-info ">
+        <nav class="  d-flex  p-2 ml-2 shadow navbar navbar-expand-xl navbar-light bg-warning ">
        <div class="container-fluid h6 justify-content-start  ">
          <a class="navbar-brand" href="#"><img src="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png"/>
 Mon Profil</a>
@@ -13,10 +13,10 @@ Mon Profil</a>
          <div class="collapse navbar-collapse" id="navbarNav">
            <ul class="navbar-nav">
              <li class="nav-item">
-               <a class="nav-link active" aria-current="page" href="#">Mes Annonces</a>
+               <a class="nav-link active" aria-current="page" href="myadvert">Mes Annonces</a>
              </li>
              <li class="nav-item">
-               <a class="nav-link" href="#">Mes Messages</a>
+               <a class="nav-link" href="mymessages">Mes Messages</a>
              </li>
              <li class="nav-item">
                <a class="nav-link" href="#">Mes Demandes</a>

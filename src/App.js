@@ -11,6 +11,8 @@ import Favorits from "components/Favorits";
 import NavbarPartner from "components/partner/NavbarPartner";
 import useAuth from "hooks/useAuth";
 import PartnerHome from "components/partner/PartnerHome";
+import Myadvert from "components/partner/Myadverts";
+import ModifyAdvert from "components/partner/ModifyAdvert";
 
 const App = () => {
   
@@ -34,6 +36,8 @@ const App = () => {
           <Route path="post/:id" element={<Post />} />
           <Route path="favorite" element={<Favorits />} />
           <Route path="partner" element={<PartnerHome />} />
+          <Route path="myadvert" element={<Myadvert />} />
+          <Route path="modifyadvert" element={<ModifyAdvert />} />
         </Routes>
       </div>
     </div>
