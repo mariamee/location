@@ -23,11 +23,11 @@ Mon Profil</a>
              </li>
              
              <li class="nav-item">
-               <a class="nav-link disabled">Commentaires</a>
+               <a class="nav-link" href="mycomments">Commentaires</a>
              </li>
              
-             <li class="nav-item">
-               <a class="nav-link disabled">Déconnexion</a>
+             <li class="d-flex">
+               <a class="d-flex nav-link btn btn-outline">Se déconnecter</a>
              </li>
            </ul>
          </div>
