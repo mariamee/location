@@ -19,10 +19,7 @@ Mon Profil</a>
                <a class="nav-link" href="mymessages">Mes Messages</a>
              </li>
              <li class="nav-item">
-               <a class="nav-link" href="#">Mes Demandes</a>
-             </li>
-             <li class="nav-item">
-               <a class="nav-link disabled">Paramétrage</a>
+               <a class="nav-link" href="myrequests">Mes Demandes</a>
              </li>
              
              <li class="nav-item">

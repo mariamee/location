@@ -14,6 +14,7 @@ import PartnerHome from "components/partner/PartnerHome";
 import Myadvert from "components/partner/Myadverts";
 import ModifyAdvert from "components/partner/ModifyAdvert";
 import NewAdvert from "components/partner/NewAdvert";
+import MyMesages from "components/partner/MyMessages";
 
 const App = () => {
   
@@ -40,6 +41,7 @@ const App = () => {
           <Route path="myadvert" element={<Myadvert />} />
           <Route path="modifyadvert" element={<ModifyAdvert />} />
           <Route path="newadvert" element={<NewAdvert/>} />
+          <Route path="mymessages" element={<MyMesages/>}/>
         </Routes>
       </div>
     </div>
