@@ -13,6 +13,7 @@ import useAuth from "hooks/useAuth";
 import PartnerHome from "components/partner/PartnerHome";
 import Myadvert from "components/partner/Myadverts";
 import ModifyAdvert from "components/partner/ModifyAdvert";
+import NewAdvert from "components/partner/NewAdvert";
 
 const App = () => {
   
@@ -38,6 +39,7 @@ const App = () => {
           <Route path="partner" element={<PartnerHome />} />
           <Route path="myadvert" element={<Myadvert />} />
           <Route path="modifyadvert" element={<ModifyAdvert />} />
+          <Route path="newadvert" element={<NewAdvert/>} />
         </Routes>
       </div>
     </div>

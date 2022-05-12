@@ -50,7 +50,7 @@ const PartnerHome = () => {
             className="form-control mt-3 p-25"
             id="bio"
             placeholder="Qui suis-je ?"
-          /> ù
+          /> 
           </div>
           <div className="text-center pt-0 pb-2">
           <button type="submit" className="btn btn-success">

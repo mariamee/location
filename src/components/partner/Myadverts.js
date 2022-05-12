@@ -12,7 +12,7 @@ const Myadverts = () => {
 <div>
 </div>
 </div>
-<div><button type="button" className="btn btn-info mt-5"> +  Créer une nouvelle annonce</button></div>
+<div><Link to="/newadvert"><button type="button" className="btn btn-info mt-5"> +  Créer une nouvelle annonce</button></Link></div>
 <div className="align-items-center shadow mt-5 ">
 <table class="table">
    <thead class="table-warning ">
