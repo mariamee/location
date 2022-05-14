@@ -17,6 +17,7 @@ import NewAdvert from "components/partner/NewAdvert";
 import MyMesages from "components/partner/MyMessages";
 import MyRequests from "components/partner/MyRequests";
 import MyComments from "components/partner/MyComments";
+import LoginAdmin from "components/Admin/LoginAdmin";
 
 const App = () => {
   
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="mymessages" element={<MyMesages/>}/>
           <Route path="myrequests" element={<MyRequests/>}/>
           <Route path="mycomments" element={<MyComments/>}/>
+          <Route path="loginadmin" element={<LoginAdmin />} />
         </Routes>
       </div>
     </div>
