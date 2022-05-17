@@ -1,11 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import useAuth from "hooks/useAuth";
 
 const Navbar = () => {
-  const user = useAuth();
-  console.log("user", user);
+  const navigate = useNavigate();
+
+  const data = useAuth();
+  console.log("data", data);
+  const role = data?.role;
+  const user = data?.user;
+  console.log("user Navbar", user);
+
+  const logout = () => {
+    localStorage.removeItem("data");
+    navigate("/login");
+  };
 
   return (
     <div className="d-flex justify-content-start align-items-center p-2 shadow bg-light ">
@@ -17,6 +27,10 @@ const Navbar = () => {
       {user && (
         <div>
           <span className="h4 me-2 text-primary">{user.name}</span>
+          <small>{role?.role || ""}</small>
+          <button onClick={logout} className="btn btn-danger btn-sm ms-2">
+            log out
+          </button>
         </div>
       )}
       {!user && (

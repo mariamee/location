@@ -1,7 +1,24 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+import { onConnect } from "services/login";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    console.log("email", email);
+    console.log("password", password);
+    const isConnected = await onConnect(email, password);
+    if (isConnected) {
+      console.log("isConnected", isConnected);
+      navigate("/");
+    }
+  };
+
   return (
     <div>
       <h1 className="text-center my-5">Connexion</h1>
@@ -9,6 +26,8 @@ const Login = () => {
         <div className="my-5">
           <label htmlFor="email">E-mail</label>
           <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="form-control mt-3"
             id="email"
             placeholder="Votre Email"
@@ -17,6 +36,8 @@ const Login = () => {
         <div>
           <label htmlFor="password">Password</label>
           <input
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className="form-control mt-3"
             id="password"
             type="password"
@@ -24,7 +45,13 @@ const Login = () => {
           />
         </div>
         <div className="text-center my-5">
-          <button className="btn btn-primary shadow">Se connecter</button>
+          <button
+            onClick={onSubmit}
+            type="submit"
+            className="btn btn-primary shadow"
+          >
+            Se connecter
+          </button>
           <p className="pt-5">
             Pas encore inscrit ?
             <Link to="/register" className="ms-2">
