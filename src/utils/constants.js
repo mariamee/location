@@ -32,6 +32,11 @@ export const DISPONIBILITIES = [
   { value: "disponible", label: "Disponible" },
   { value: "indisponible", label: "Non disponible" },
 ];
+export const ROLES = [
+  { value: "1", label: "Admin" },
+  { value: "2", label: "Client" },
+  { value: "3", label: "Partenaire" },
+];
 
 export const ADS = [
   {

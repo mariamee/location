@@ -13,3 +13,14 @@ export const onConnect = async (email, password) => {
     return null;
   }
 };
+
+export const onRegister = async (user) => {
+  try {
+    const { data } = await http.post("/register", user);
+    console.log("onRegister response", data);
+    return data;
+  } catch (error) {
+    toast.error("error register");
+    return null;
+  }
+};
