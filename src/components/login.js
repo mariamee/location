@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import useAuth from "hooks/useAuth";
 
 import { onConnect } from "services/login";
 
@@ -7,11 +8,14 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { setUser } = useAuth();
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const isConnected = await onConnect(email, password);
-    if (isConnected) {
+    const response = await onConnect(email, password);
+
+    if (response) {
+      setUser(response);
       navigate("/");
     }
   };

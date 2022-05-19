@@ -21,9 +21,9 @@ const Preview = ({ title, price, img, id }) => {
             <HEART_ICON className="bg-primary" />
           </div>
         </div>
-        <div class="card-body text-center">
-          <p class="card-text h2">{price}</p>
-          <p class="card-text">{title}</p>
+        <div className="card-body text-center">
+          <p className="card-text h2">{price}</p>
+          <p className="card-text">{title}</p>
         </div>
       </div>
     </Link>

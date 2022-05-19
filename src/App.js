@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -14,8 +14,6 @@ import Messages from "./components/Messages";
 import Locations from "./components/Locations";
 import Post from "components/Post";
 import Favorits from "components/Favorits";
-import NavbarPartner from "components/partner/NavbarPartner";
-import useAuth from "hooks/useAuth";
 import PartnerHome from "components/partner/PartnerHome";
 import Myadvert from "components/partner/Myadverts";
 import ModifyAdvert from "components/partner/ModifyAdvert";
@@ -25,23 +23,15 @@ import MyRequests from "components/partner/MyRequests";
 import MyComments from "components/partner/MyComments";
 import LoginAdmin from "components/Admin/LoginAdmin";
 import { UserContext } from "utils/contexts";
-import { ROLE_IDS } from "utils/constants";
 
 const App = () => {
   const [user, setUser] = useState(null);
-  const role_id = useAuth()?.role?.role_id;
-
-  const isPartner = role_id == ROLE_IDS.PARTENER;
-  const isAdmin = role_id == ROLE_IDS.ADMIN;
-  const isClient = role_id == ROLE_IDS.CLIENT;
-  const localData = localStorage.getItem("data");
 
   return (
     <>
       <ToastContainer />
       <UserContext.Provider value={{ user, setUser }}>
-        {isPartner && <NavbarPartner />}
-        {!isPartner && <Navbar />}
+        <Navbar />
         <div className="container mt-3">
           <Routes>
             <Route path="/" element={<Home />} />

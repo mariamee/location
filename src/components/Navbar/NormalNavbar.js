@@ -3,14 +3,16 @@ import { Link, useNavigate } from "react-router-dom";
 
 import useAuth from "hooks/useAuth";
 
-const Navbar = () => {
+const NormalNavbar = () => {
   const navigate = useNavigate();
 
-  const data = useAuth();
+  const { user: data, setUser } = useAuth();
   const role = data?.role;
   const user = data?.user;
 
   const logout = () => {
+    console.log("logout");
+    setUser(null);
     localStorage.removeItem("data");
     navigate("/login");
   };
@@ -47,4 +49,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NormalNavbar;
