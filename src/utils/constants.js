@@ -17,10 +17,13 @@ export const CITIES = [
   { value: "arfoud", label: "Arfoud" },
   { value: "rabat", label: "Rabat" },
 ];
-export const CATEGORIES = [
-  { value: "cars", label: "Voitures" },
-  { value: "sctooters", label: "Trotinettes" },
-  { value: "garden", label: "Jardinage" },
+
+export const HEADERS = { withCredentials: true };
+
+export const OBJECTS = [
+  { value: "1", label: "Voitures" },
+  { value: "2", label: "Trotinettes" },
+  { value: "3", label: "Jardinage" },
 ];
 
 export const PRICES = [
@@ -32,6 +35,11 @@ export const DISPONIBILITIES = [
   { value: "disponible", label: "Disponible" },
   { value: "indisponible", label: "Non disponible" },
 ];
+export const ROLE_IDS = {
+  ADMIN: "1",
+  CLIENT: "2",
+  PARTENER: "3",
+};
 export const ROLES = [
   { value: "1", label: "Admin" },
   { value: "2", label: "Client" },

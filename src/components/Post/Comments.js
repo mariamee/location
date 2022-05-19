@@ -4,7 +4,6 @@ import { COMMENTS } from "utils/constants";
 import Comment from "./Comment";
 
 const Comments = ({ comments = COMMENTS }) => {
-  console.log("comments", comments);
   const [newComment, setNewComment] = useState("");
   return (
     <div>

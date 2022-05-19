@@ -7,10 +7,8 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const data = useAuth();
-  console.log("data", data);
   const role = data?.role;
   const user = data?.user;
-  console.log("user Navbar", user);
 
   const logout = () => {
     localStorage.removeItem("data");

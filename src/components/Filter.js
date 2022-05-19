@@ -1,11 +1,6 @@
 import React from "react";
 import Select from "react-select";
-import {
-  CATEGORIES,
-  CITIES,
-  PRICES,
-  DISPONIBILITIES,
-} from "../utils/constants";
+import { OBJECTS, CITIES, PRICES, DISPONIBILITIES } from "../utils/constants";
 import { SEARCH_ICON } from "../utils/icons";
 
 const Filter = () => {
@@ -14,7 +9,7 @@ const Filter = () => {
       <div className="d-flex">
         <div className="flex-fill me-4">
           <label htmlFor="category">Categorie</label>
-          <Select id="category" options={CATEGORIES} />
+          <Select id="category" options={OBJECTS} />
         </div>
         <div className="flex-fill">
           <label htmlFor="city">Ville</label>

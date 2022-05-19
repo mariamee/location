@@ -1,7 +1,6 @@
 import React from "react";
 
 const Comment = ({ user, id, body }) => {
-  console.log("user", user);
   return (
     <div className="d-flex align-items-start border p-2">
       <img

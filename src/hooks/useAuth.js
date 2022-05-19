@@ -8,7 +8,7 @@ const useAuth = () => {
   const { user, setUser } = useContext(UserContext);
   const localData = localStorage.getItem("data");
 
-  console.log("user context", user);
+  console.log("ttt1 localData", localData);
   useEffect(() => {
     try {
       const data = JSON.parse(localData);
@@ -17,10 +17,12 @@ const useAuth = () => {
       // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik1hcmlhbWUgRWwgQWxhb3VpIiwicm9sZSI6ImNsaWVudCIsImlhdCI6MTUxNjIzOTAyMn0.dD5vFHUDDTo7JcXXbp9W-Twa2aR6dzd4kQpG8xu_C4w";
       // const user = jwt(data?.token);
       setAuth(data);
-    } catch (error) {}
+    } catch (error) {
+      // setAuth(null);
+    }
     // const user={name:"Mariame El Alaoui",role:"partner"};
     // setAuth(user);
-  }, [localData]);
+  }, []);
 
   return auth;
 };

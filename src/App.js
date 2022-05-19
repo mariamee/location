@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "react-datepicker/dist/react-datepicker.css";
+
 import { Routes, Route } from "react-router-dom";
 
 import Home from "./components/Home";
@@ -23,11 +25,17 @@ import MyRequests from "components/partner/MyRequests";
 import MyComments from "components/partner/MyComments";
 import LoginAdmin from "components/Admin/LoginAdmin";
 import { UserContext } from "utils/contexts";
+import { ROLE_IDS } from "utils/constants";
 
 const App = () => {
   const [user, setUser] = useState(null);
-  const role = useAuth()?.role;
-  const isPartner = role === "partner";
+  const role_id = useAuth()?.role?.role_id;
+
+  const isPartner = role_id == ROLE_IDS.PARTENER;
+  const isAdmin = role_id == ROLE_IDS.ADMIN;
+  const isClient = role_id == ROLE_IDS.CLIENT;
+  const localData = localStorage.getItem("data");
+
   return (
     <>
       <ToastContainer />

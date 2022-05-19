@@ -10,11 +10,8 @@ const Login = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log("email", email);
-    console.log("password", password);
     const isConnected = await onConnect(email, password);
     if (isConnected) {
-      console.log("isConnected", isConnected);
       navigate("/");
     }
   };

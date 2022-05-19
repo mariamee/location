@@ -20,9 +20,7 @@ const Post = () => {
   if (!post) return null;
   const { title, body, rating, prix = 300, disponible = true } = post;
 
-  const ratingChanged = (newRating) => {
-    console.log(newRating);
-  };
+  const ratingChanged = (newRating) => {};
 
   return (
     <div className="row">

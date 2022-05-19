@@ -20,14 +20,6 @@ const Register = () => {
     if (!isEnabled) return;
 
     e.preventDefault();
-    console.log("name", name);
-    console.log("email", email);
-    console.log("password", password);
-    console.log("ville", ville);
-    console.log("addresse", addresse);
-    console.log("telephone", telephone);
-    console.log("cin", cin);
-    console.log("role", role);
     const isRegistered = await onRegister({
       name,
       email,
