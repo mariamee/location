@@ -20,13 +20,13 @@ export const CITIES = [
 
 export const HEADERS = { withCredentials: true };
 
-export const OBJECTS = [
+export const CATEGORIES = [
   { value: "1", label: "Voitures" },
   { value: "2", label: "Trotinettes" },
   { value: "3", label: "Jardinage" },
 ];
 
-export const PRICES = [
+export const SORT_PRICES = [
   { value: "asc", label: "Prix bas à élevé" },
   { value: "desc", label: "Prix élevé à bas" },
 ];

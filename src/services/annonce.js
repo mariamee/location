@@ -12,3 +12,12 @@ export const getAllAnnonces = async () => {
     return null;
   }
 };
+export const addNewAnnonce = async (annonce) => {
+  try {
+    const { data } = await http.post("/annonce/add", annonce, HEADERS);
+    return data;
+  } catch (error) {
+    toast.error("Error posting annonce");
+    return null;
+  }
+};
