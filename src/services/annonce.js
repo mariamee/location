@@ -32,3 +32,12 @@ export const addNewAnnonce = async annonce => {
     return null
   }
 }
+export const deleteAnnonce = async id => {
+  try {
+    const { data } = await http.delete(`/annonce/delete/${id}`, HEADERS)
+    return data
+  } catch (error) {
+    toast.error(`Error deleting annonce with id ${id}`)
+    return null
+  }
+}

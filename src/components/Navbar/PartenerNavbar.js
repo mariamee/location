@@ -16,10 +16,10 @@ const PartnerNavbar = () => {
     <nav className="  d-flex  p-2 ml-2 shadow navbar navbar-expand-xl navbar-light bg-warning ">
       <div className="container-fluid h6 justify-content-start">
         <div className="dd">
-          <a className="navbar-brand" href="#">
-            <img src="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png" />
+          <Link className="navbar-brand" to="/">
+            <img src="https://i.imgur.com/ngIERO2.png" alt="profile" />
             Mon Profil
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
