@@ -1,23 +1,34 @@
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify'
 
-import { HEADERS } from "utils/constants";
-import http from "./http";
+import { HEADERS } from 'utils/constants'
+import http from './http'
 
 export const getAllAnnonces = async () => {
   try {
-    const { data } = await http.get("/annonces/", HEADERS);
-    return data?.annonces;
+    const { data } = await http.get('/annonces/', HEADERS)
+    return data?.annonces
   } catch (error) {
-    toast.error("Error fetching annonces");
-    return null;
+    toast.error('Error fetching annonces')
+    return null
   }
-};
-export const addNewAnnonce = async (annonce) => {
+}
+
+export const getMyAnnonces = async () => {
   try {
-    const { data } = await http.post("/annonce/add", annonce, HEADERS);
-    return data;
+    const { data } = await http.get('/myannonces/', HEADERS)
+    return data?.annonces
   } catch (error) {
-    toast.error("Error posting annonce");
-    return null;
+    toast.error('Error fetching my annonces')
+    return null
   }
-};
+}
+
+export const addNewAnnonce = async annonce => {
+  try {
+    const { data } = await http.post('/annonce/add', annonce, HEADERS)
+    return data
+  } catch (error) {
+    toast.error('Error posting annonce')
+    return null
+  }
+}

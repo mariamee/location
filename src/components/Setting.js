@@ -1,5 +1,5 @@
-import React from "react";
-import { LOCATION_ICON } from "utils/icons";
+import React from 'react'
+import { LOCATION_ICON } from 'utils/icons'
 
 const Setting = () => {
   return (
@@ -9,7 +9,7 @@ const Setting = () => {
         <div>ffff</div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Setting;
+export default Setting

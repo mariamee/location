@@ -1,21 +1,21 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
-import useAuth from "hooks/useAuth";
+import useAuth from 'hooks/useAuth'
 
 const NormalNavbar = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const { user: data, setUser } = useAuth();
-  const role = data?.role;
-  const user = data?.user;
+  const { user: data, setUser } = useAuth()
+  const role = data?.role
+  const user = data?.user
 
   const logout = () => {
-    console.log("logout");
-    setUser(null);
-    localStorage.removeItem("data");
-    navigate("/login");
-  };
+    console.log('logout')
+    setUser(null)
+    localStorage.removeItem('data')
+    navigate('/login')
+  }
 
   return (
     <div className="d-flex justify-content-start align-items-center p-2 shadow bg-light ">
@@ -27,7 +27,7 @@ const NormalNavbar = () => {
       {user && (
         <div>
           <span className="h4 me-2 text-primary">{user.name}</span>
-          <small>{role?.role || ""}</small>
+          <small>{role?.role || ''}</small>
           <button onClick={logout} className="btn btn-danger btn-sm ms-2">
             log out
           </button>
@@ -36,9 +36,7 @@ const NormalNavbar = () => {
       {!user && (
         <div>
           <Link to="login">
-            <button className="btn btn-outline-primary me-2">
-              Se connecter
-            </button>
+            <button className="btn btn-outline-primary me-2">Se connecter</button>
           </Link>
           <Link to="register">
             <button className="btn btn-outline-danger">S'inscrire</button>
@@ -46,7 +44,7 @@ const NormalNavbar = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default NormalNavbar;
+export default NormalNavbar

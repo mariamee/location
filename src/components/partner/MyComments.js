@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { ARROW } from "../../utils/icons";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { ARROW } from '../../utils/icons'
 const MyComments = () => {
   return (
     <div>
@@ -55,7 +55,7 @@ const MyComments = () => {
         </table>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default MyComments;
+export default MyComments

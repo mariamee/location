@@ -1,16 +1,16 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import useAuth from "hooks/useAuth";
+import React from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import useAuth from 'hooks/useAuth'
 
 const PartnerNavbar = () => {
-  const navigate = useNavigate();
-  const { setUser } = useAuth();
+  const navigate = useNavigate()
+  const { setUser } = useAuth()
 
   const logout = () => {
-    localStorage.removeItem("data");
-    setUser(null);
-    navigate("/login");
-  };
+    localStorage.removeItem('data')
+    setUser(null)
+    navigate('/login')
+  }
 
   return (
     <nav className="  d-flex  p-2 ml-2 shadow navbar navbar-expand-xl navbar-light bg-warning ">
@@ -32,17 +32,10 @@ const PartnerNavbar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
         </div>
-        <div
-          className="collapse navbar-collapse d-flex justify-content-end"
-          id="navbarNav"
-        >
+        <div className="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a
-                className="nav-link active"
-                aria-current="page"
-                href="myadvert"
-              >
+              <a className="nav-link active" aria-current="page" href="myadvert">
                 Mes Annonces
               </a>
             </li>
@@ -64,10 +57,7 @@ const PartnerNavbar = () => {
             </li>
 
             <li className="d-flex">
-              <button
-                className="d-flex nav-link btn btn-outline btn-danger btn-sm"
-                onClick={logout}
-              >
+              <button className="d-flex nav-link btn btn-outline btn-danger btn-sm" onClick={logout}>
                 Se déconnecter
               </button>
             </li>
@@ -75,6 +65,6 @@ const PartnerNavbar = () => {
         </div>
       </div>
     </nav>
-  );
-};
-export default PartnerNavbar;
+  )
+}
+export default PartnerNavbar

@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { ARROW } from "../utils/icons";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { ARROW } from '../utils/icons'
 
 const Messages = () => {
   return (
@@ -68,7 +68,7 @@ const Messages = () => {
         </table>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Messages;
+export default Messages

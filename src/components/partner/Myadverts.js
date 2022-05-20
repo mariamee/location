@@ -1,20 +1,24 @@
-import React, { useEffect, useState } from "react";
-import Select from "react-select";
-import { Link } from "react-router-dom";
-import Opérations from "./Operations";
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { getMyAnnonces } from 'services/annonce'
+import { CATEGORIES } from 'utils/constants'
 
 const Myadverts = () => {
+  const [annonces, setAnnonces] = useState([])
+  useEffect(() => {
+    getMyAnnonces().then(_annonces => setAnnonces(_annonces))
+  }, [])
+
   return (
     <div>
       <div className="d-flex justify-content-start align-items-center p-2 shadow bg-light ">
-        <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/40/000000/external-advert-internet-marketing-flaticons-lineal-color-flat-icons.png" />
-        <div className="text-align h5 py-2 ps-5"> Mes annonces</div>
+        <img src="https://i.imgur.com/JxqDbJN.png" alt="my annonces" />
+        <div className="text-align h5 py-2 ps-5">Mes annonces</div>
         <div></div>
       </div>
       <div>
         <Link to="/newadvert">
           <button type="button" className="btn btn-info mt-5">
-            {" "}
             + Créer une nouvelle annonce
           </button>
         </Link>
@@ -30,37 +34,32 @@ const Myadverts = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">01</th>
-              <td></td>
-              <td></td>
-              <td>
-                <Opérations />
-              </td>
-            </tr>
-
-            <tr>
-              <th scope="row">02</th>
-              <td></td>
-              <td></td>
-              <td>
-                <Opérations />
-              </td>
-            </tr>
-
-            <tr>
-              <th scope="row">03</th>
-              <td></td>
-              <td></td>
-              <td>
-                <Opérations />
-              </td>
-            </tr>
+            {annonces?.map(({ categorie, title, id }) => {
+              const category = CATEGORIES?.find(c => c.value === categorie || c.default).label
+              return (
+                <tr key={id}>
+                  <td>{id}</td>
+                  <td>{category}</td>
+                  <td>{title}</td>
+                  <td>
+                    <button type="button" className="btn btn-success">
+                      Modifier
+                    </button>
+                    <button type="button" className="btn btn-secondary ms-2 ps-2 pe-2">
+                      Archiver
+                    </button>
+                    <button type="button" className="btn btn-danger ms-2 ps-2 pe-2">
+                      Supprimer
+                    </button>
+                  </td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Myadverts;
+export default Myadverts

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import Select from "react-select";
-import { Link } from "react-router-dom";
-import Response from "./Response";
+import React, { useEffect, useState } from 'react'
+import Select from 'react-select'
+import { Link } from 'react-router-dom'
+import Response from './Response'
 
 const MyRequests = () => {
   return (
@@ -48,7 +48,7 @@ const MyRequests = () => {
         </table>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default MyRequests;
+export default MyRequests

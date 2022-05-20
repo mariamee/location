@@ -1,12 +1,7 @@
-import React from "react";
-import Select from "react-select";
-import {
-  CATEGORIES,
-  CITIES,
-  SORT_PRICES,
-  DISPONIBILITIES,
-} from "../utils/constants";
-import { SEARCH_ICON } from "../utils/icons";
+import React from 'react'
+import Select from 'react-select'
+import { CATEGORIES, CITIES, SORT_PRICES, DISPONIBILITIES } from '../utils/constants'
+import { SEARCH_ICON } from '../utils/icons'
 
 const Filter = () => {
   return (
@@ -38,7 +33,7 @@ const Filter = () => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Filter;
+export default Filter

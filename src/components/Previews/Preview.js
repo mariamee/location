@@ -1,21 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-import { HEART_ICON } from "utils/icons";
+import { HEART_ICON } from 'utils/icons'
 
 const Preview = ({ title, prix, img, id, ville }) => {
   return (
     <Link to={`/post/${id}`} className="ms-2 no_decoration">
-      <div
-        type="button"
-        className="mx-2 border border-dark rounded-3 px-3 pt-3 m-2 bg-light shadow"
-      >
+      <div type="button" className="mx-2 border border-dark rounded-3 px-3 pt-3 m-2 bg-light shadow">
         <div className="position-relative">
           <img
-            src={"https://picsum.photos/200/301"}
+            src={'https://picsum.photos/200/301'}
             alt={title}
             className="card-img-top border border-2 border-dark rounded-3"
-            style={{ width: "10rem", height: "10rem" }}
+            style={{ width: '10rem', height: '10rem' }}
           />
           <div className="position-absolute top-0 end-0">
             <HEART_ICON className="bg-primary" />
@@ -30,10 +27,10 @@ const Preview = ({ title, prix, img, id, ville }) => {
         </div>
       </div>
     </Link>
-  );
-};
+  )
+}
 
-export default Preview;
+export default Preview
 
 // 'particulier_id',
 // 'categorie',

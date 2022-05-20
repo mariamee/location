@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import useAuth from "hooks/useAuth";
+import React, { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import useAuth from 'hooks/useAuth'
 
-import { onConnect } from "services/login";
+import { onConnect } from 'services/login'
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-  const { setUser } = useAuth();
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const navigate = useNavigate()
+  const { setUser } = useAuth()
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    const response = await onConnect(email, password);
+  const onSubmit = async e => {
+    e.preventDefault()
+    const response = await onConnect(email, password)
 
     if (response) {
-      setUser(response);
-      navigate("/");
+      setUser(response)
+      navigate('/')
     }
-  };
+  }
 
   return (
     <div>
@@ -28,7 +28,7 @@ const Login = () => {
           <label htmlFor="email">E-mail</label>
           <input
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
             className="form-control mt-3"
             id="email"
             placeholder="Votre Email"
@@ -38,7 +38,7 @@ const Login = () => {
           <label htmlFor="password">Password</label>
           <input
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
             className="form-control mt-3"
             id="password"
             type="password"
@@ -46,11 +46,7 @@ const Login = () => {
           />
         </div>
         <div className="text-center my-5">
-          <button
-            onClick={onSubmit}
-            type="submit"
-            className="btn btn-primary shadow"
-          >
+          <button onClick={onSubmit} type="submit" className="btn btn-primary shadow">
             Se connecter
           </button>
           <p className="pt-5">
@@ -62,7 +58,7 @@ const Login = () => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

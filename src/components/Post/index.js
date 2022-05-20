@@ -1,62 +1,46 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import ReactStars from "react-rating-stars-component";
-import Select from "react-select";
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import ReactStars from 'react-rating-stars-component'
+import Select from 'react-select'
 
-import { getPost } from "services/post";
-import { LOCATION_ICON } from "utils/icons";
-import Comments from "./Comments";
-import { RENT_DURATION } from "utils/constants";
+import { getPost } from 'services/post'
+import { LOCATION_ICON } from 'utils/icons'
+import Comments from './Comments'
+import { RENT_DURATION } from 'utils/constants'
 
 const Post = () => {
-  const { id } = useParams();
-  const [post, setPost] = useState(null);
-  const [counter, setCounter] = useState(1);
+  const { id } = useParams()
+  const [post, setPost] = useState(null)
+  const [counter, setCounter] = useState(1)
 
   useEffect(() => {
-    if (id) getPost(id).then((post) => setPost(post));
-  }, [id]);
+    if (id) getPost(id).then(post => setPost(post))
+  }, [id])
 
-  if (!post) return null;
-  const { title, body, rating, prix = 300, disponible = true } = post;
+  if (!post) return null
+  const { title, body, rating, prix = 300, disponible = true } = post
 
-  const ratingChanged = (newRating) => {};
+  const ratingChanged = newRating => {}
 
   return (
     <div className="row">
       <div className="col-3">
         <div>
-          <img
-            className="img-fluid rounded"
-            src="https://picsum.photos/450/450"
-            alt="post"
-          />
+          <img className="img-fluid rounded" src="https://picsum.photos/450/450" alt="post" />
         </div>
         <div className="mt-2 border p-2">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore,
-            adipisci.
-          </p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, adipisci.</p>
           <span className="h5 text-danger">{prix} DH</span>
           <div className="d-flex align-items-center">
             <div className="flex-fill">
-              <span className={"text-" + (disponible ? "success" : "danger")}>
-                {disponible ? "" : "Non "}Disponible
-              </span>
+              <span className={'text-' + (disponible ? 'success' : 'danger')}>{disponible ? '' : 'Non '}Disponible</span>
             </div>
 
-            <Select
-              className="flex-fill"
-              placeholder="Durée"
-              id="disponibity"
-              options={RENT_DURATION}
-            />
+            <Select className="flex-fill" placeholder="Durée" id="disponibity" options={RENT_DURATION} />
           </div>
           <div className="p-2 text-center">
             <div>
-              <button className="btn btn-primary my-3">
-                Ajouter au favoris
-              </button>
+              <button className="btn btn-primary my-3">Ajouter au favoris</button>
             </div>
             <div>
               <button className="btn btn-success px-5">Reserver</button>
@@ -86,13 +70,7 @@ const Post = () => {
       <div className="col-9">
         <div className="border rounded p-3 shadow-lg bg-light">
           <h3>{title}</h3>
-          <ReactStars
-            value={rating || 2}
-            count={5}
-            onChange={ratingChanged}
-            size={24}
-            activeColor="#ffd700"
-          />
+          <ReactStars value={rating || 2} count={5} onChange={ratingChanged} size={24} activeColor="#ffd700" />
           <div className="d-flex align-items-start">
             <LOCATION_ICON /> <span className="h5">Tetouan</span>
           </div>
@@ -107,7 +85,7 @@ const Post = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Post;
+export default Post

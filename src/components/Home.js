@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import Adverts from "./Adverts";
-import Filter from "./Filter";
-import Previews from "./Previews";
-import { getAllAnnonces } from "services/annonce";
+import React, { useEffect, useState } from 'react'
+import Adverts from './Adverts'
+import Filter from './Filter'
+import Previews from './Previews'
+import { getAllAnnonces } from 'services/annonce'
 
 const Home = () => {
-  const [previews, setPreviews] = useState([]);
+  const [previews, setPreviews] = useState([])
   useEffect(() => {
-    getAllAnnonces().then((_previews) => setPreviews(_previews));
-  }, []);
+    getAllAnnonces().then(_previews => setPreviews(_previews))
+  }, [])
 
-  if (!previews?.length) return null;
+  if (!previews?.length) return null
 
   return (
     <div>
@@ -18,7 +18,7 @@ const Home = () => {
       <Adverts />
       <Previews previews={previews} />
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

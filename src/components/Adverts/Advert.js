@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const Advert = ({ title, img, price }) => {
   return (
@@ -7,13 +7,13 @@ const Advert = ({ title, img, price }) => {
         src={img}
         alt={title}
         className="card-img-top border border-2 border-dark rounded-3"
-        style={{ width: "10rem", height: "10rem" }}
+        style={{ width: '10rem', height: '10rem' }}
       />
       <div className="card-body text-center">
         <p className="card-text">{title}</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Advert;
+export default Advert

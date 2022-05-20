@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
-import { COMMENTS } from "utils/constants";
-import Comment from "./Comment";
+import { COMMENTS } from 'utils/constants'
+import Comment from './Comment'
 
 const Comments = ({ comments = COMMENTS }) => {
-  const [newComment, setNewComment] = useState("");
+  const [newComment, setNewComment] = useState('')
   return (
     <div>
       <h3>Commentaires</h3>
@@ -13,13 +13,13 @@ const Comments = ({ comments = COMMENTS }) => {
         className="form-control"
         placeholder="Votre commentaire"
         value={newComment}
-        onChange={(e) => setNewComment(e.target.value)}
+        onChange={e => setNewComment(e.target.value)}
       />
-      {comments?.map((comment) => (
+      {comments?.map(comment => (
         <Comment key={comment.id} {...comment} />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default Comments;
+export default Comments
