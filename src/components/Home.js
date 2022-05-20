@@ -10,7 +10,7 @@ const Home = () => {
     getAllAnnonces().then((_previews) => setPreviews(_previews));
   }, []);
 
-  if (!previews?.length) return <div>Waiting</div>;
+  if (!previews?.length) return null;
 
   return (
     <div>
