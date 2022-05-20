@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import Adverts from "./Adverts";
 import Filter from "./Filter";
 import Previews from "./Previews";
-import { getPosts } from "services/post";
+import { getAllAnnonces } from "services/annonce";
 
 const Home = () => {
   const [previews, setPreviews] = useState([]);
   useEffect(() => {
-    getPosts().then((_previews) => setPreviews(_previews));
+    getAllAnnonces().then((_previews) => setPreviews(_previews));
   }, []);
 
   if (!previews?.length) return <div>Waiting</div>;
