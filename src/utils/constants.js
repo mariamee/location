@@ -204,3 +204,14 @@ export const RENT_DURATION = [
   { value: '7', label: '1 semaine' },
   { value: '30', label: '1 mois' },
 ]
+
+export const STYLE_MODAL = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+}

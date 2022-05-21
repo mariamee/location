@@ -32,6 +32,17 @@ export const addNewAnnonce = async annonce => {
     return null
   }
 }
+
+export const editAnnonce = async (annonce, id) => {
+  try {
+    const { data } = await http.put(`/annonce/update/${id}`, annonce, HEADERS)
+    return data
+  } catch (error) {
+    toast.error('Error editing annonce')
+    return null
+  }
+}
+
 export const deleteAnnonce = async id => {
   try {
     const { data } = await http.delete(`/annonce/delete/${id}`, HEADERS)

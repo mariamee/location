@@ -65,42 +65,7 @@ const NewAdvert = () => {
               placeholder="Titre Annonce"
             />
           </div>
-          {/* <div className=" form-check form-check-inline pt-2 ">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="Neuf"
-              id="new"
-              value="new"
-            />
-            <label class="form-check-label" for="new">
-              Neuf
-            </label>
-          </div> */}
-          {/* <div className=" form-check form-check-inline pt-2 ">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="Bon"
-              id="medium"
-              value="medium"
-            />
-            <label class="form-check-label" for="medium">
-              Bon état
-            </label>
-          </div> */}
-          {/* <div className=" form-check form-check-inline pt-2 ">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="Moyen"
-              id="old"
-              value="old"
-            />
-            <label class="form-check-label" for="old">
-              Moyen
-            </label>
-          </div> */}
+
           <div className="text-info mt-2">* Télécharger une image,cela favorise votre annonce!</div>
           <div className="border border-secondary rounded py-2 ps-2  bg-light mt-2">
             <button className="bg-success border-success rounded p-25">
@@ -119,14 +84,6 @@ const NewAdvert = () => {
             placeholder="**** Description *****"
           />
         </div>
-        {/* <div className="mt-2 flex-column pt-2 ">
-          <label htmlFor="category">Conditions sur l'objet</label>
-          <input
-            className="form-control mt-3 p-25"
-            id="condition"
-            placeholder="Condition 1 ..."
-            />
-        </div> */}
         <div className="flex-column pt-2">
           <label htmlFor="ville">Ville</label>
           <Select id="ville" options={CITIES} value={ville} onChange={o => setVille(o)} />
