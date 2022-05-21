@@ -16,10 +16,11 @@ const PartnerNavbar = () => {
     <nav className="  d-flex  p-2 ml-2 shadow navbar navbar-expand-xl navbar-light bg-warning ">
       <div className="container-fluid h6 justify-content-start">
         <div className="dd">
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand" to="personal-information">
             <img src="https://i.imgur.com/ngIERO2.png" alt="profile" />
-            Mon Profil
           </Link>
+        </div>
+        <div className="gg">
           <button
             className="navbar-toggler"
             type="button"
@@ -36,14 +37,16 @@ const PartnerNavbar = () => {
           <ul className="navbar-nav">
             <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="myadvert">
-                Mes Annonces
+                <Link className="navbar-brand" to="/">
+                  Acceuil
+                </Link>
               </a>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <a className="nav-link" href="mymessages">
                 Mes Messages
               </a>
-            </li>
+            </li>*/}
             <li className="nav-item">
               <a className="nav-link" href="myrequests">
                 Mes Demandes

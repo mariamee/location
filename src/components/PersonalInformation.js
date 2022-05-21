@@ -17,13 +17,13 @@ const PersonalInformation = () => {
         <Link to="/messages" style={{ textDecoration: 'none' }}>
           <div className="text-center">
             <MESSAGES />
-            <div className="text-dark">Messages</div>
+            <div className="text-dark">Mes Messages</div>
           </div>
         </Link>
         <Link to="/location" style={{ textDecoration: 'none' }}>
           <div className="text-center">
             <LOCATIONS />
-            <div className="text-dark">Locations</div>
+            <div className="text-dark">Mes Annonces</div>
           </div>
         </Link>
       </form>
