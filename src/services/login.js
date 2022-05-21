@@ -24,3 +24,21 @@ export const onRegister = async user => {
     return null
   }
 }
+export const getMyData = async () => {
+  try {
+    const { data } = await http.get('/user', HEADERS)
+    return data
+  } catch (error) {
+    toast.error('error getting my informations')
+    return null
+  }
+}
+export const updateUser = async user => {
+  try {
+    const { data } = await http.put('/user', user, HEADERS)
+    return data
+  } catch (error) {
+    toast.error('error updating user informations')
+    return null
+  }
+}

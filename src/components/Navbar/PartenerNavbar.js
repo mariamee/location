@@ -36,7 +36,7 @@ const PartnerNavbar = () => {
         <div className="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="myadvert">
+              <a className="nav-link active" aria-current="page" href="myadverts">
                 <Link className="navbar-brand" to="/">
                   Acceuil
                 </Link>

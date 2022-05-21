@@ -45,8 +45,8 @@ const EditeOperation = ({ id, annonce, setAnnonces }) => {
     const isEdited = await editAnnonce(editedAnnonce, id)
     setLoading(false)
     if (isEdited) {
+      setAnnonces(annonces => annonces.map(annonce => (annonce.id !== id ? annonce : { ...annonce, ...editedAnnonce })))
       setIsOpen(false)
-      //   setAnnonces(annonces => annonces.map(annonce => (annonce.id !== id ? annonce : isEdited)))
     }
   }
 
