@@ -42,6 +42,16 @@ export const editAnnonce = async (annonce, id) => {
     return null
   }
 }
+export const archiveAnnonce = async (id, annonce) => {
+  const isArchive = annonce.status == 1 ? true : false
+  try {
+    const { data } = await http.put(`/annonce/update/${id}`, annonce, HEADERS)
+    return data
+  } catch (error) {
+    toast.error(`Error ${isArchive ? 'arhiving' : 'unarchiving'} annonce`)
+    return null
+  }
+}
 
 export const deleteAnnonce = async id => {
   try {
