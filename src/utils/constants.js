@@ -1,4 +1,4 @@
-export const CITIES = [ 
+export const CITIES = [
   { value: 'afourar', label: 'Afourar' },
   { value: 'agadir', label: 'Agadir' },
   { value: 'agdz', label: 'Agdz' },
@@ -71,7 +71,6 @@ export const ROLE_IDS = {
   PARTENER: '3',
 }
 export const ROLES = [
-  { value: '1', label: 'Admin' },
   { value: '2', label: 'Client' },
   { value: '3', label: 'Partenaire' },
 ]

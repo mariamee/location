@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-
+import 'index.css'
 import useAuth from 'hooks/useAuth'
 import { onLogout } from 'services/login'
 
@@ -19,17 +19,20 @@ const NormalNavbar = () => {
   }
 
   return (
-    <div className="d-flex justify-content-start align-items-center p-2 shadow bg-light ">
+    <div className="d-flex justify-content-start align-items-center p-2 shadow bg-dark ">
       <div className="me-auto d-flex align-items-center">
-        <Link to="/" className="text-decoration-none text-black h3 my-2">
-          LocationApp
+        <Link to="/" className="text-decoration-none text-light h3 my-2">
+          Rent
+          <Link to="/" className="text-decoration-none text-warning h3 my-2">
+            O
+          </Link>
         </Link>
       </div>
       {user && (
         <div>
           <span className="h4 me-2 text-primary">{user.name}</span>
           <small>{role?.role || ''}</small>
-          <button onClick={logout} className="btn btn-danger btn-sm ms-2">
+          <button onClick={logout} className="btn btn-warning btn-sm ms-2">
             log out
           </button>
         </div>
@@ -37,10 +40,10 @@ const NormalNavbar = () => {
       {!user && (
         <div>
           <Link to="login">
-            <button className="btn btn-outline-primary me-2">Se connecter</button>
+            <button className="btn btn-outline-light me-2">Se connecter</button>
           </Link>
           <Link to="register">
-            <button className="btn btn-outline-danger">S'inscrire</button>
+            <button className="btn btn-outline-warning">S'inscrire</button>
           </Link>
         </div>
       )}
