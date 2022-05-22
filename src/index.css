@@ -23,3 +23,6 @@ code {
 .no_decoration {
   text-decoration: none;
 }
+.navbar{
+  margin-bottom: -30px;
+}

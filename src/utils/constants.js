@@ -1,4 +1,4 @@
-export const CITIES = [
+export const CITIES = [ 
   { value: 'afourar', label: 'Afourar' },
   { value: 'agadir', label: 'Agadir' },
   { value: 'agdz', label: 'Agdz' },
