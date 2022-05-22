@@ -1,15 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { getImage } from 'utils'
 
 import { HEART_ICON } from 'utils/icons'
 
-const Preview = ({ title, prix, img, id, ville }) => {
+const Preview = ({ title, prix, image, id, ville }) => {
   return (
     <Link to={`/post/${id}`} className="ms-2 no_decoration">
       <div type="button" className="mx-2 border border-dark rounded-3 px-3 pt-3 m-2 bg-light shadow">
         <div className="position-relative">
           <img
-            src={'https://picsum.photos/200/301'}
+            src={getImage(image)}
             alt={title}
             className="card-img-top border border-2 border-dark rounded-3"
             style={{ width: '10rem', height: '10rem' }}

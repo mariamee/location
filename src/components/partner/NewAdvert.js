@@ -25,26 +25,37 @@ const NewAdvert = () => {
   const [description, setDescription] = useState('')
   const [date_debut, setDate_debut] = useState(new Date())
   const [date_fin, setDate_fin] = useState(new Date())
-  const [disponibilite, setDisponibilite] = useState('')
-  const [status, setStatus] = useState('')
+  const [image, setImage] = useState(null)
 
   const onSubmit = async e => {
     e.preventDefault()
-    const annonce = {
-      particulier_id: user_id,
-      ville: ville?.value,
-      title,
-      description,
-      date_debut: moment(date_debut).format('YYYY-MM-DD'),
-      date_fin: moment(date_fin).format('YYYY-MM-DD'),
-      disponibilite: '1',
-      status: '1',
-      marque,
-      categorie: categorie?.value,
-      prix,
-    }
-    const isPosted = await addNewAnnonce(annonce)
+    const formData = new FormData()
+    formData.append('image', image)
+    formData.append('ville', ville?.value)
+    formData.append('categorie', categorie?.value)
+    formData.append('marque', marque)
+    formData.append('prix', prix)
+    formData.append('title', title)
+    formData.append('description', description)
+    formData.append('date_debut', moment(date_debut).format('YYYY-MM-DD'))
+    formData.append('date_fin', moment(date_fin).format('YYYY-MM-DD'))
+    formData.append('disponibilite', '1')
+    formData.append('status', '1')
+    formData.append('particulier_id', user_id)
+
+    const isPosted = await addNewAnnonce(formData)
     if (isPosted) navigate('/')
+  }
+
+  const onImageChange = event => {
+    event.preventDefault()
+
+    if (event.target.files && event.target.files[0]) {
+      const img = event.target.files[0]
+      console.log('img', img)
+      // setImage(URL.createObjectURL(img))
+      setImage(img)
+    }
   }
 
   return (
@@ -69,10 +80,7 @@ const NewAdvert = () => {
 
           <div className="text-info mt-2">* Télécharger une image,cela favorise votre annonce!</div>
           <div className="border border-secondary rounded py-2 ps-2  bg-light mt-2">
-            <button className="bg-success border-success rounded p-25">
-              <img className="pe-2" src="https://img.icons8.com/dotty/20/000000/download.png" />
-              Ajouter Image
-            </button>
+            <input type="file" onChange={onImageChange} accept="image/*" />
           </div>
         </div>
         <div className="mt-2 flex-column pt-2 ">

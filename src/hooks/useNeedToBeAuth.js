@@ -5,7 +5,10 @@ import useAuth from 'hooks/useAuth'
 
 const useNeedToBeAuth = () => {
   const { user } = useAuth()
+  //   console.log('user useAuth', user)
   const navigate = useNavigate()
+  //   const localData = localStorage.getItem('data')
+  //   const lsUser = localData && JSON.parse(localData)
 
   useEffect(() => {
     if (!user) navigate('/login')
