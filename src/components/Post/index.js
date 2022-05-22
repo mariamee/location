@@ -8,9 +8,11 @@ import Comments from './Comments'
 import { RENT_DURATION } from 'utils/constants'
 import { getAnnonceDetail, getUserAnnonceOwner } from 'services/annonce'
 import { getImage } from 'utils'
+import useAuth from 'hooks/useAuth'
 
 const Post = () => {
   const { id } = useParams()
+  const { isClient } = useAuth()
   const [annonce, setAnnonce] = useState(null)
   const [userAnnonce, setUserAnnonce] = useState(null)
   const particulier_id = annonce?.particulier_id
@@ -50,9 +52,11 @@ const Post = () => {
             <div>
               <button className="btn btn-primary my-3">Ajouter au favoris</button>
             </div>
-            <div>
-              <button className="btn btn-success px-5">Reserver</button>
-            </div>
+            {isClient && (
+              <div>
+                <button className="btn btn-success px-5">Reserver</button>
+              </div>
+            )}
           </div>
         </div>
         <div className="mt-2 p-2 border">
