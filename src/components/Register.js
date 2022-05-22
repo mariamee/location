@@ -17,9 +17,10 @@ const Register = () => {
   const [role, setRole] = useState('')
 
   const onSubmit = async e => {
+    e.preventDefault()
+
     if (!isEnabled) return
 
-    e.preventDefault()
     const isRegistered = await onRegister({
       name,
       email,
@@ -112,14 +113,15 @@ const Register = () => {
 
         <div class="form-end">
           <p class="text-center">
-            {' '}
             Vous avez déjà un compte?
             <Link to="/register" className="ms-2">
               Se connecter
             </Link>
           </p>
           <div class="button-holder">
-            <button id="btn-maisaa"> S'inscrire </button>
+            <button id="btn-maisaa" type="submit" onClick={onSubmit}>
+              S'inscrire
+            </button>
           </div>
         </div>
       </form>

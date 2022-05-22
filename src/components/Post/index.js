@@ -6,20 +6,29 @@ import Select from 'react-select'
 import { LOCATION_ICON } from 'utils/icons'
 import Comments from './Comments'
 import { RENT_DURATION } from 'utils/constants'
-import { getAnnonceDetail, getUserAnnonceOwner } from 'services/annonce'
+import { getAnnonceDetail, getUserAnnonceOwner, reserveAnnonce } from 'services/annonce'
 import { getImage } from 'utils'
 import useAuth from 'hooks/useAuth'
+import { getDetailReservation, getMyReservations } from 'services/reservation'
 
 const Post = () => {
   const { id } = useParams()
   const { isClient } = useAuth()
   const [annonce, setAnnonce] = useState(null)
   const [userAnnonce, setUserAnnonce] = useState(null)
+  // const [reservationDetail, setReservationDetail] = useState(null)
+  const [reservations, setReservations] = useState(null)
   const particulier_id = annonce?.particulier_id
-  console.log('user annonce', userAnnonce)
+
+  const status_reservation = reservations?.find(r => r.annonce_id == id)?.status
+  // console.log('status_reservation', status_reservation)
 
   useEffect(() => {
-    if (id) getAnnonceDetail(id).then(post => setAnnonce(post))
+    if (id) {
+      getAnnonceDetail(id).then(post => setAnnonce(post))
+      // getDetailReservation(id).then(res => setReservationDetail(res))
+      getMyReservations(id).then(res => setReservations(res))
+    }
   }, [id])
   useEffect(() => {
     if (particulier_id) {
@@ -28,9 +37,17 @@ const Post = () => {
   }, [particulier_id])
 
   if (!annonce) return null
-  const { title, description, rating, prix = 300, disponible = true, ville, image } = annonce
+  const { title, description, rating, prix = 300, disponible = true, ville, image, date_debut, date_fin } = annonce
 
   const ratingChanged = newRating => {}
+
+  const onReserve = async () => {
+    const reservation = { annonce_id: id, date_debut, date_fin }
+    const isReserved = await reserveAnnonce(reservation)
+    if (isReserved) {
+      getMyReservations(id).then(res => setReservations(res))
+    }
+  }
 
   return (
     <div className="row">
@@ -54,7 +71,9 @@ const Post = () => {
             </div>
             {isClient && (
               <div>
-                <button className="btn btn-success px-5">Reserver</button>
+                <button className="btn btn-success px-5" onClick={onReserve}>
+                  {status_reservation || 'Reserver'}
+                </button>
               </div>
             )}
           </div>

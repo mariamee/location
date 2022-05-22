@@ -61,6 +61,17 @@ export const editAnnonce = async (annonce, id) => {
     return null
   }
 }
+
+export const reserveAnnonce = async reservation => {
+  try {
+    const { data } = await http.post('reservation/add', reservation, HEADERS)
+    toast.success('Invitation de reservation envoyée avec succès')
+    return data
+  } catch (error) {
+    toast.error('Error reserving annonce')
+    return null
+  }
+}
 export const archiveAnnonce = async (id, annonce) => {
   const isArchive = annonce.status == 1 ? true : false
   try {
