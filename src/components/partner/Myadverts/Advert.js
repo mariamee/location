@@ -3,10 +3,12 @@ import { CATEGORIES } from 'utils/constants'
 import ArchiveOperation from './ArchiveOperation'
 import DeleteOperation from './DeleteOperation'
 import EditeOperation from './EditOperation'
+import ReservationsOperation from './ReservationsOperation'
 
-const Advert = ({ annonce, setAnnonces }) => {
+const Advert = ({ annonce, setAnnonces, reservations, setReservations }) => {
   const { categorie, title, id } = annonce
   const category = CATEGORIES?.find(c => c.value === categorie || c.default).label
+  const annonce_reservations = reservations?.filter(reservation => reservation.annonce_id === id)
 
   return (
     <tr key={id} className={annonce.status == 0 ? 'bg-secondary text-light' : ''}>
@@ -15,11 +17,12 @@ const Advert = ({ annonce, setAnnonces }) => {
       <td>{title}</td>
       <td>
         <EditeOperation annonce={annonce} setAnnonces={setAnnonces} id={id} />
-        {/* <button type="button" className="btn btn-secondary ms-2 ps-2 pe-2">
-          Archiver
-        </button> */}
+
         <ArchiveOperation id={id} setAnnonces={setAnnonces} annonce={annonce} />
         <DeleteOperation setAnnonces={setAnnonces} id={id} />
+        {!!annonce_reservations?.length && (
+          <ReservationsOperation {...{ reservations: annonce_reservations, setReservations, setAnnonces, id }} />
+        )}
       </td>
     </tr>
   )

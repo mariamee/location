@@ -18,12 +18,10 @@ const Post = () => {
   const [userAnnonce, setUserAnnonce] = useState(null)
   const [reservationDetail, setReservationDetail] = useState(null)
   const particulier_id = annonce?.particulier_id
-  console.log('reservationDetail', reservationDetail)
 
   // const status_reservation = reservationDetail?.status
   const status_reservation = reservationDetail?.find(r => r.client_id === user_id)?.status
   const reservation_count = reservationDetail?.length
-  // console.log('status_reservation', status_reservation)
 
   useEffect(() => {
     if (id) {

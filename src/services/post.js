@@ -6,7 +6,6 @@ export const getPosts = async () => {
   // TODO , MOCK data, use real data instead
   return POSTS
 
-  // console.log("data", data);
   // return data;
 }
 

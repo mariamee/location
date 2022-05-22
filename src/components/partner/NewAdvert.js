@@ -52,7 +52,6 @@ const NewAdvert = () => {
 
     if (event.target.files && event.target.files[0]) {
       const img = event.target.files[0]
-      console.log('img', img)
       // setImage(URL.createObjectURL(img))
       setImage(img)
     }

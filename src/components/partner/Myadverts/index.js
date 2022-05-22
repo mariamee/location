@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getMyAnnonces } from 'services/annonce'
+import { getPartnerReservations } from 'services/reservation'
 
 import Advert from './Advert'
 
 const Myadverts = () => {
   const [annonces, setAnnonces] = useState([])
+  const [reservations, setReservations] = useState([])
   useEffect(() => {
     getMyAnnonces().then(_annonces => setAnnonces(_annonces))
+    getPartnerReservations().then(_reservations => setReservations(_reservations))
   }, [])
 
   return (
@@ -36,7 +39,7 @@ const Myadverts = () => {
           </thead>
           <tbody>
             {annonces?.map(annonce => (
-              <Advert annonce={annonce} setAnnonces={setAnnonces} />
+              <Advert {...{ reservations, setReservations, setAnnonces, annonce }} />
             ))}
           </tbody>
         </table>
