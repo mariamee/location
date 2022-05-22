@@ -27,7 +27,6 @@ export const onLogout = async () => {
 export const onRegister = async user => {
   try {
     const { data } = await http.post('/register', user, HEADERS)
-    console.log('onRegister response', data)
     return data
   } catch (error) {
     toast.error('error register')

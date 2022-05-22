@@ -15,10 +15,19 @@ export const getAllAnnonces = async () => {
 export const getAnnonceDetail = async id => {
   try {
     const { data } = await http.get(`/annonce/${id}`, HEADERS)
-    console.log('getAnnonceDetail response', data?.annonce)
     return data?.annonce
   } catch (error) {
     toast.error('Error fetching annonces')
+    return null
+  }
+}
+
+export const getUserAnnonceOwner = async id => {
+  try {
+    const { data } = await http.get(`/user/${id}`, HEADERS)
+    return data
+  } catch (error) {
+    toast.error('Error fetching user informations')
     return null
   }
 }

@@ -6,16 +6,23 @@ import Select from 'react-select'
 import { LOCATION_ICON } from 'utils/icons'
 import Comments from './Comments'
 import { RENT_DURATION } from 'utils/constants'
-import { getAnnonceDetail } from 'services/annonce'
+import { getAnnonceDetail, getUserAnnonceOwner } from 'services/annonce'
 
 const Post = () => {
   const { id } = useParams()
   const [annonce, setAnnonce] = useState(null)
-  const [counter, setCounter] = useState(1)
+  const [userAnnonce, setUserAnnonce] = useState(null)
+  const particulier_id = annonce?.particulier_id
+  console.log('user annonce', userAnnonce)
 
   useEffect(() => {
     if (id) getAnnonceDetail(id).then(post => setAnnonce(post))
   }, [id])
+  useEffect(() => {
+    if (particulier_id) {
+      getUserAnnonceOwner(particulier_id).then(user => setUserAnnonce(user))
+    }
+  }, [particulier_id])
 
   if (!annonce) return null
   const { title, description, rating, prix = 300, disponible = true, ville } = annonce
@@ -58,8 +65,8 @@ const Post = () => {
               height={80}
             />
             <div className="media-body ms-2 d-flex flex-column justify-content-cetner align-items-center">
-              <h6 className="text-primary">Mariame El Alaoui</h6>
-              <p>de Tetouan</p>
+              <h6 className="text-primary">{userAnnonce.name}</h6>
+              <p>de {userAnnonce.ville}</p>
             </div>
           </div>
           <div className="text-center">

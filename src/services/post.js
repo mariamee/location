@@ -22,10 +22,8 @@ export const getFavorits = async () => {
 export const onPostAdvert = async advert => {
   try {
     const { data } = await http.post('/annonce/add', advert, HEADERS)
-    console.log('onPostAdvert response', data)
     return data
   } catch (error) {
-    console.log('error', error)
     return null
   }
 }

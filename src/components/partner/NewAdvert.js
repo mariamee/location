@@ -41,7 +41,6 @@ const NewAdvert = () => {
       categorie: categorie?.value,
       prix,
     }
-    console.log('annonce', annonce)
     const isPosted = await addNewAnnonce(annonce)
     if (isPosted) navigate('/')
   }
