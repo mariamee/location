@@ -10,7 +10,7 @@ const Preview = ({ title, prix, image, id, ville }) => {
       <div type="button" className="mx-2 border border-dark rounded-3 px-3 pt-3 m-2 bg-light shadow">
         <div className="position-relative">
           <img
-            src={getImage(image)}
+            src={getImage(image) || '/no_image.jpeg'}
             alt={title}
             className="card-img-top border border-2 border-dark rounded-3"
             style={{ width: '10rem', height: '10rem' }}
