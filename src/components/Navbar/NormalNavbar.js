@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import useAuth from 'hooks/useAuth'
+import { onLogout } from 'services/login'
 
 const NormalNavbar = () => {
   const navigate = useNavigate()
@@ -10,8 +11,8 @@ const NormalNavbar = () => {
   const role = data?.role
   const user = data?.user
 
-  const logout = () => {
-    console.log('logout')
+  const logout = async () => {
+    await onLogout()
     setUser(null)
     localStorage.removeItem('data')
     navigate('/login')

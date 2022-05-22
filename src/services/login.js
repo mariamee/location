@@ -13,6 +13,16 @@ export const onConnect = async (email, password) => {
     return null
   }
 }
+export const onLogout = async () => {
+  try {
+    const { data } = await http.get('/logout', HEADERS)
+    localStorage.removeItem('data')
+    return data
+  } catch (error) {
+    toast.error('error logging out')
+    return null
+  }
+}
 
 export const onRegister = async user => {
   try {

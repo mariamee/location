@@ -5,8 +5,10 @@ import { CITIES } from '../utils/constants'
 import { HEART_ICON, LOCATIONS, MESSAGES } from '../utils/icons'
 import { getMyData, updateUser } from 'services/login'
 import { toast } from 'react-toastify'
+import useAuth from 'hooks/useAuth'
 
 const PersonalInformation = () => {
+  const { isClient } = useAuth()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [telephone, setTelephone] = useState('')
@@ -27,7 +29,6 @@ const PersonalInformation = () => {
 
   const onSave = async e => {
     e.preventDefault()
-    console.log('save')
     const user = { name, email, telephone, ville, addresse, cin }
     const isUpdated = await updateUser(user)
     if (isUpdated) {
@@ -38,12 +39,14 @@ const PersonalInformation = () => {
   return (
     <div className="p-5 py-5">
       <form className="border border-dark p mb-5 h5 d-flex justify-content-around">
-        <Link to="/favorite" style={{ textDecoration: 'none' }}>
-          <div className="text-center">
-            <HEART_ICON size={65} />
-            <div className="text-dark">Liste d'envies</div>
-          </div>
-        </Link>
+        {isClient && (
+          <Link to="/favorite" style={{ textDecoration: 'none' }}>
+            <div className="text-center">
+              <HEART_ICON size={65} />
+              <div className="text-dark">Liste d'envies</div>
+            </div>
+          </Link>
+        )}
         <Link to="/messages" style={{ textDecoration: 'none' }}>
           <div className="text-center">
             <MESSAGES />

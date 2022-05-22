@@ -1,8 +1,13 @@
 import { useContext, useEffect } from 'react'
+import { ROLE_IDS } from 'utils/constants'
 import { UserContext } from 'utils/contexts'
 
 const useAuth = () => {
   const { user, setUser } = useContext(UserContext)
+  const role_id = user?.role?.role_id
+  const isPartner = role_id == ROLE_IDS.PARTENER
+  const isAdmin = role_id == ROLE_IDS.ADMIN
+  const isClient = role_id == ROLE_IDS.CLIENT
 
   useEffect(() => {
     if (!user) {
@@ -12,7 +17,7 @@ const useAuth = () => {
     }
   }, [])
 
-  return { user, setUser }
+  return { user, setUser, isPartner, isAdmin, isClient }
 }
 
 export default useAuth
