@@ -3,22 +3,22 @@ import { useParams } from 'react-router-dom'
 import ReactStars from 'react-rating-stars-component'
 import Select from 'react-select'
 
-import { getPost } from 'services/post'
 import { LOCATION_ICON } from 'utils/icons'
 import Comments from './Comments'
 import { RENT_DURATION } from 'utils/constants'
+import { getAnnonceDetail } from 'services/annonce'
 
 const Post = () => {
   const { id } = useParams()
-  const [post, setPost] = useState(null)
+  const [annonce, setAnnonce] = useState(null)
   const [counter, setCounter] = useState(1)
 
   useEffect(() => {
-    if (id) getPost(id).then(post => setPost(post))
+    if (id) getAnnonceDetail(id).then(post => setAnnonce(post))
   }, [id])
 
-  if (!post) return null
-  const { title, body, rating, prix = 300, disponible = true } = post
+  if (!annonce) return null
+  const { title, description, rating, prix = 300, disponible = true, ville } = annonce
 
   const ratingChanged = newRating => {}
 
@@ -72,14 +72,15 @@ const Post = () => {
           <h3>{title}</h3>
           <ReactStars value={rating || 2} count={5} onChange={ratingChanged} size={24} activeColor="#ffd700" />
           <div className="d-flex align-items-start">
-            <LOCATION_ICON /> <span className="h5">Tetouan</span>
+            <LOCATION_ICON /> <span className="h5">{ville}</span>
           </div>
           <div>
             <strong className="text-danger h4">Prix. {prix} DH</strong>
           </div>
           <div>
             <h3>Description</h3>
-            <p>{body}</p>
+
+            <p>{description}</p>
           </div>
           <Comments />
         </div>

@@ -12,6 +12,16 @@ export const getAllAnnonces = async () => {
     return null
   }
 }
+export const getAnnonceDetail = async id => {
+  try {
+    const { data } = await http.get(`/annonce/${id}`, HEADERS)
+    console.log('getAnnonceDetail response', data?.annonce)
+    return data?.annonce
+  } catch (error) {
+    toast.error('Error fetching annonces')
+    return null
+  }
+}
 
 export const getMyAnnonces = async () => {
   try {
