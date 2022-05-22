@@ -127,29 +127,13 @@ const NewAdvert = () => {
           </label>
         </div>
         <div className="h5 text-info mt-2">Activation de l'annonce</div>
-        <div className="mt-2 ps-5">J'aimerais bien activer l'annonce</div>
-        <div className=" form-check pt-2 ">
-          <input class="form-check-input" type="radio" name="Maintenant" id="now" value="now" />
-          <label class="form-check-label" for="now">
-            Maintenant
-          </label>
-        </div>
-        <div className=" form-check pt-2 ">
-          <input class="form-check-input" type="radio" name="a-week" id="a-week" value="a-week" />
-          <label class="form-check-label" for="a-week">
-            Après une semaine
-          </label>
-        </div>
-        <div className="mt-2 flex-column pt-2 ">
-          <label htmlFor="category">A préciser en jours</label>
-          <input className="form-control mt-3 p-25" id="nbdays" placeholder="ex = 5 Jours" />
-        </div>
+        <div className="mt-2 ">J'aimerais bien activer mon annonce pendant cette durée :</div>
         <div className="d-flex justify-content-around mb-3">
-          <div className="mt-2 flex-column pt-2 ">
+          <div className=" flex-column pt-2 ms-0 ">
             <label htmlFor="date_debut">Date debut</label>
             <DatePicker selected={date_debut} onChange={date => setDate_debut(date)} />
           </div>
-          <div className="mt-2 flex-column pt-2 ">
+          <div className="mt-2 ml-0 flex">
             <label htmlFor="date_fin">Date fin</label>
             <DatePicker selected={date_fin} onChange={date => setDate_fin(date)} />
           </div>
