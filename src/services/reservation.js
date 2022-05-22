@@ -5,8 +5,8 @@ import http from './http'
 
 export const getDetailReservation = async id => {
   try {
-    const { data } = await http.get(`/reservation/${id}`, HEADERS)
-    return data
+    const { data } = await http.get(`/reservationByAnnonceId/${id}`, HEADERS)
+    return data?.reservation
   } catch (error) {
     toast.error('Error fetching reservation')
     return null

@@ -13,21 +13,22 @@ import { getDetailReservation, getMyReservations } from 'services/reservation'
 
 const Post = () => {
   const { id } = useParams()
-  const { isClient } = useAuth()
+  const { isClient, user_id } = useAuth()
   const [annonce, setAnnonce] = useState(null)
   const [userAnnonce, setUserAnnonce] = useState(null)
-  // const [reservationDetail, setReservationDetail] = useState(null)
-  const [reservations, setReservations] = useState(null)
+  const [reservationDetail, setReservationDetail] = useState(null)
   const particulier_id = annonce?.particulier_id
+  console.log('reservationDetail', reservationDetail)
 
-  const status_reservation = reservations?.find(r => r.annonce_id == id)?.status
+  // const status_reservation = reservationDetail?.status
+  const status_reservation = reservationDetail?.find(r => r.client_id === user_id)?.status
+  const reservation_count = reservationDetail?.length
   // console.log('status_reservation', status_reservation)
 
   useEffect(() => {
     if (id) {
       getAnnonceDetail(id).then(post => setAnnonce(post))
-      // getDetailReservation(id).then(res => setReservationDetail(res))
-      getMyReservations(id).then(res => setReservations(res))
+      getDetailReservation(id).then(res => setReservationDetail(res))
     }
   }, [id])
   useEffect(() => {
@@ -45,7 +46,7 @@ const Post = () => {
     const reservation = { annonce_id: id, date_debut, date_fin }
     const isReserved = await reserveAnnonce(reservation)
     if (isReserved) {
-      getMyReservations(id).then(res => setReservations(res))
+      getDetailReservation(id).then(res => setReservationDetail(res))
     }
   }
 
@@ -72,7 +73,7 @@ const Post = () => {
             {isClient && (
               <div>
                 <button className="btn btn-success px-5" onClick={onReserve}>
-                  {status_reservation || 'Reserver'}
+                  {status_reservation || 'Reserver'} {reservation_count && <strong className="text-warning">{reservation_count}</strong>}
                 </button>
               </div>
             )}
