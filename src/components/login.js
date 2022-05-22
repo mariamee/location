@@ -37,7 +37,7 @@ const Login = () => {
                 </div>
 
                 <form class="signin-form">
-                  <div class="form-group mb-3">
+                  <div class="form-group mb-3 d-block">
                     <label class="label" for="name">
                       E-mail
                     </label>
@@ -50,7 +50,7 @@ const Login = () => {
                       required
                     />
                   </div>
-                  <div class="form-group mb-3">
+                  <div class="form-group mb-3 d-block">
                     <label class="label" for="password">
                       Mot de passe
                     </label>
