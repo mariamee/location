@@ -4,13 +4,15 @@ import Select from 'react-select'
 import DatePicker from 'react-datepicker'
 import { useNavigate } from 'react-router-dom'
 
-import { CITIES, CATEGORIES, SORT_PRICES } from '../../utils/constants'
+import { CITIES, CATEGORIES } from '../../utils/constants'
 import { addNewAnnonce } from 'services/annonce'
 
 import useAuth from 'hooks/useAuth'
+import useNeedToBeAuth from 'hooks/useNeedToBeAuth'
 
 const NewAdvert = () => {
   //   const user = useAuth()?.user;
+  useNeedToBeAuth()
   const { user } = useAuth()
   const user_id = user?.user?.id
 

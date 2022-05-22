@@ -6,8 +6,10 @@ import { HEART_ICON, LOCATIONS, MESSAGES } from '../utils/icons'
 import { getMyData, updateUser } from 'services/login'
 import { toast } from 'react-toastify'
 import useAuth from 'hooks/useAuth'
+import useNeedToBeAuth from 'hooks/useNeedToBeAuth'
 
 const PersonalInformation = () => {
+  useNeedToBeAuth()
   const { isClient } = useAuth()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
