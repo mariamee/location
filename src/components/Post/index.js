@@ -7,9 +7,12 @@ import { LOCATION_ICON } from 'utils/icons'
 import Comments from './Comments'
 import { RENT_DURATION } from 'utils/constants'
 import { getAnnonceDetail, getUserAnnonceOwner } from 'services/annonce'
+import { getImage } from 'utils'
+import useAuth from 'hooks/useAuth'
 
 const Post = () => {
   const { id } = useParams()
+  const { isClient } = useAuth()
   const [annonce, setAnnonce] = useState(null)
   const [userAnnonce, setUserAnnonce] = useState(null)
   const particulier_id = annonce?.particulier_id
@@ -25,7 +28,7 @@ const Post = () => {
   }, [particulier_id])
 
   if (!annonce) return null
-  const { title, description, rating, prix = 300, disponible = true, ville } = annonce
+  const { title, description, rating, prix = 300, disponible = true, ville, image } = annonce
 
   const ratingChanged = newRating => {}
 
@@ -33,7 +36,7 @@ const Post = () => {
     <div className="row">
       <div className="col-3">
         <div>
-          <img className="img-fluid rounded" src="https://picsum.photos/450/450" alt="post" />
+          <img className="img-fluid rounded" src={getImage(image) || '/no_image.jpeg'} alt="post" />
         </div>
         <div className="mt-2 border p-2">
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, adipisci.</p>
@@ -49,9 +52,11 @@ const Post = () => {
             <div>
               <button className="btn btn-primary my-3">Ajouter au favoris</button>
             </div>
-            <div>
-              <button className="btn btn-success px-5">Reserver</button>
-            </div>
+            {isClient && (
+              <div>
+                <button className="btn btn-success px-5">Reserver</button>
+              </div>
+            )}
           </div>
         </div>
         <div className="mt-2 p-2 border">
