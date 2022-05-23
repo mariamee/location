@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { getImage } from 'utils'
 
-import { HEART_ICON } from 'utils/icons'
+// import { HEART_ICON } from 'utils/icons'
 
 const Preview = ({ title, prix, image, id, ville }) => {
   return (
@@ -15,9 +15,9 @@ const Preview = ({ title, prix, image, id, ville }) => {
             className="card-img-top border border-2 border-dark rounded-3"
             style={{ width: '10rem', height: '10rem' }}
           />
-          <div className="position-absolute top-0 end-0">
+          {/* <div className="position-absolute top-0 end-0">
             <HEART_ICON className="bg-primary" />
-          </div>
+          </div> */}
         </div>
         <div className="card-body text-center text-dark">
           <p className="card-text">{title}</p>

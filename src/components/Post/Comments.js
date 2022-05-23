@@ -7,7 +7,7 @@ const Comments = ({ comments = COMMENTS }) => {
   const [newComment, setNewComment] = useState('')
   return (
     <div>
-      <h3>Commentaires</h3>
+      <div className="h4 text-warning fw-bold mt-5">Commentaires</div>
       <input
         type="text"
         className="form-control"

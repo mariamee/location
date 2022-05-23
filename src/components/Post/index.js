@@ -49,11 +49,23 @@ const Post = () => {
   }
 
   return (
+    <div className="container">
+    <h3>{title}</h3>
     <div className="row">
-      <div className="col-3">
+      <div className="flex">
         <div>
           <img className="img-fluid rounded" src={getImage(image) || '/no_image.jpeg'} alt="post" />
+          <div className=' '>
+            <div className='mt-5 h4 fw-bold text-warning '>Description</div>
+             <h5><p>{description}</p></h5>
+          <Comments />
         </div>
+        
+        </div>
+        <ReactStars value={rating || 2} count={5} onChange={ratingChanged} size={24} activeColor="#ffd700" />
+          <div className="d-flex align-items-start">
+            <LOCATION_ICON /> <span className="h5">{ville}</span>
+          </div>
         <div className="mt-2 border p-2">
           <span className="h5 text-danger">{prix} DH</span>
           <div className="d-flex align-items-center">
@@ -80,33 +92,16 @@ const Post = () => {
           <h4>Annonce de:</h4>
           <div className="d-flex align-items-start">
             <div className="media-body ms-2 d-flex flex-column justify-content-cetner align-items-center">
-              <h6 className="text-primary">{userAnnonce?.name}</h6>
+              <h6 className="text-primary mb-2">{userAnnonce?.name}</h6>
               <h6><p>de {userAnnonce?.ville}</p></h6>
             </div>
           </div>
           <div className="text-center">
-            <button className="btn btn-secondary">Message</button>
+            <button className="btn btn-secondary mt-2">Message</button>
           </div>
         </div>
       </div>
-      <div className="col-9">
-        <div className="border rounded p-3 shadow-lg bg-light">
-          <h3>{title}</h3>
-          <ReactStars value={rating || 2} count={5} onChange={ratingChanged} size={24} activeColor="#ffd700" />
-          <div className="d-flex align-items-start">
-            <LOCATION_ICON /> <span className="h5">{ville}</span>
           </div>
-          <div>
-            <strong className="text-danger h4">Prix. {prix} DH</strong>
-          </div>
-          <div>
-            <h3>Description</h3>
-
-            <p>{description}</p>
-          </div>
-          <Comments />
-        </div>
-      </div>
     </div>
   )
 }

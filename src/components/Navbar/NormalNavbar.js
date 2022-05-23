@@ -30,7 +30,7 @@ const NormalNavbar = () => {
       </div>
       {user && (
         <div>
-          <span className="h4 me-2 text-primary">{user.name}</span>
+          <button><span className="h4 me-2 text-">{user.name}</span></button>
           <small>{role?.role || ''}</small>
           <button onClick={logout} className="btn btn-warning btn-sm ms-2">
             log out

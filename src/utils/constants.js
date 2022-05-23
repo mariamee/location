@@ -198,16 +198,14 @@ export const COMMENTS = [
   {
     id: 1,
     user: {
-      name: 'John Doe',
-      avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
+      name: 'mariamel',
     },
-    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod.',
+    body: 'Je vous recommande ',
   },
   {
     id: 2,
     user: {
-      name: 'Mariame El Alaoui',
-      avatar: 'https://randomuser.me/api/portraits/men/2.jpg',
+      name: 'maisaa',
     },
     body: 'balbla blabla, test comment',
   },
@@ -215,8 +213,7 @@ export const COMMENTS = [
     id: 3,
     user: {
       name: 'Safae',
-      avatar: 'https://randomuser.me/api/portraits/men/3.jpg',
-    },
+  },
     body: 'Hello everyone, test test test',
   },
 ]
