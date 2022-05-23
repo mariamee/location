@@ -78,33 +78,27 @@ export const ROLES = [
 export const ADS = [
   {
     id: 1,
-    title: 'BMW X5',
-    price: '100',
-    img: 'https://picsum.photos/200/305',
+    title: 'Casque JBL JB-X100',
+    price: '50',
+    img: '',
   },
   {
     id: 2,
-    title: 'Dacia Logan',
+    title: 'Machine à laver Thomson',
     price: '150',
     img: 'https://picsum.photos/200/300',
   },
   {
     id: 3,
-    title: 'Renault Clio',
+    title: 'Samsung QLED TV',
     price: '180',
-    img: 'https://picsum.photos/200/301',
+    img:'../Casque.jpg',
   },
   {
     id: 4,
-    title: 'Peugeot 208',
+    title: 'Ecran LCD',
     price: '250',
     img: 'https://picsum.photos/200/302',
-  },
-  {
-    id: 5,
-    title: 'Citroën C3',
-    price: '450',
-    img: 'https://picsum.photos/200/306',
   },
 ]
 

@@ -55,7 +55,6 @@ const Post = () => {
           <img className="img-fluid rounded" src={getImage(image) || '/no_image.jpeg'} alt="post" />
         </div>
         <div className="mt-2 border p-2">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, adipisci.</p>
           <span className="h5 text-danger">{prix} DH</span>
           <div className="d-flex align-items-center">
             <div className="flex-fill">
@@ -80,16 +79,9 @@ const Post = () => {
         <div className="mt-2 p-2 border">
           <h4>Annonce de:</h4>
           <div className="d-flex align-items-start">
-            <img
-              className="img-fluid rounded-circle"
-              src="https://randomuser.me/api/portraits/men/10.jpg"
-              alt="user"
-              width={80}
-              height={80}
-            />
             <div className="media-body ms-2 d-flex flex-column justify-content-cetner align-items-center">
               <h6 className="text-primary">{userAnnonce?.name}</h6>
-              <p>de {userAnnonce?.ville}</p>
+              <h6><p>de {userAnnonce?.ville}</p></h6>
             </div>
           </div>
           <div className="text-center">

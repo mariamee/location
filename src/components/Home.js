@@ -3,6 +3,8 @@ import Adverts from './Adverts'
 import Filter from './Filter'
 import Previews from './Previews'
 import { getAllAnnonces } from 'services/annonce'
+// import { Carousel } from 'react-bootstrap'
+// import 'bootstrap/dist/css/bootstrap.css'
 
 const Home = () => {
   const [previews, setPreviews] = useState([])

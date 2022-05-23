@@ -29,7 +29,7 @@ const ReservationsOperation = ({ id, annonce, setAnnonces, reservations, setRese
   }
   return (
     <>
-      <button className="btn btn-info" onClick={() => setIsOpen(true)}>
+      <button className="btn btn-outline-warning ms-2  btn-sm" onClick={() => setIsOpen(true)}>
         Reservations
       </button>
       <Modal isOpen={isOpen} onRequestClose={onClose} style={STYLE_MODAL} contentLabel="Example Modal">
