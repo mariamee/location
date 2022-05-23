@@ -10,7 +10,7 @@ const Previews = () => {
     getAllAnnonces().then(res => setAnnonces(res))
   }, [])
 
-  if (!annonces.length) return null
+  if (!annonces?.length) return null
 
   return (
     <div className="border border-dark rounded p-3 my-4">

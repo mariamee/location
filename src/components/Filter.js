@@ -34,6 +34,8 @@ const Filter = () => {
     setAnnonces(_annonces)
   }
 
+  const disableSearch = !ville || !categorie || !prix || !disponible
+
   return (
     <form className="border border-dark rounded p-4 shadow-lg bg-light mt-5">
       <div className="d-flex">
@@ -68,7 +70,7 @@ const Filter = () => {
         </div>
       </div>
       <div className="d-flex justify-content-center mt-5">
-        <button className="btn btn-primary d-flex align-items-center shadow" type="submit" onClick={onSearch}>
+        <button disabled={disableSearch} className="btn btn-primary d-flex align-items-center shadow" type="submit" onClick={onSearch}>
           <SEARCH_ICON />
           <span className="ms-2">Rechercher</span>
         </button>
