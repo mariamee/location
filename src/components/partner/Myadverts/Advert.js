@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import { CATEGORIES } from 'utils/constants'
 import ArchiveOperation from './ArchiveOperation'
 import DeleteOperation from './DeleteOperation'
@@ -12,7 +14,9 @@ const Advert = ({ annonce, setAnnonces, reservations, setReservations }) => {
 
   return (
     <tr key={id} className={annonce.status == 0 ? 'bg-secondary text-light' : ''}>
-      <td>{id}</td>
+      <td>
+        <Link to={`/post/${id}`}>{id}</Link>
+      </td>
       <td>{category}</td>
       <td>{title}</td>
       <td>
