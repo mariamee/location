@@ -80,25 +80,25 @@ export const ADS = [
     id: 1,
     title: 'Casque JBL JB-X100',
     price: '50',
-    img: '',
+    image: '/premium/yo.jpeg',
   },
   {
     id: 2,
     title: 'Machine à laver Thomson',
     price: '150',
-    img: 'https://picsum.photos/200/300',
+    image: 'https://picsum.photos/200/300',
   },
   {
     id: 3,
     title: 'Samsung QLED TV',
     price: '180',
-    img:'../Casque.jpg',
+    image: '../Casque.jpg',
   },
   {
     id: 4,
     title: 'Ecran LCD',
     price: '250',
-    img: 'https://picsum.photos/200/302',
+    image: 'https://picsum.photos/200/302',
   },
 ]
 
