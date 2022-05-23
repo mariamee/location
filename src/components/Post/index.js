@@ -26,7 +26,7 @@ const Post = () => {
   useEffect(() => {
     if (id) {
       getAnnonceDetail(id).then(post => setAnnonce(post))
-      getDetailReservation(id).then(res => setReservationDetail(res))
+      if (isClient) getDetailReservation(id).then(res => setReservationDetail(res))
     }
   }, [id])
   useEffect(() => {
@@ -81,7 +81,9 @@ const Post = () => {
           <div className="d-flex align-items-start">
             <div className="media-body ms-2 d-flex flex-column justify-content-cetner align-items-center">
               <h6 className="text-primary">{userAnnonce?.name}</h6>
-              <h6><p>de {userAnnonce?.ville}</p></h6>
+              <h6>
+                <p>de {userAnnonce?.ville}</p>
+              </h6>
             </div>
           </div>
           <div className="text-center">
