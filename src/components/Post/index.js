@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import ReactStars from 'react-rating-stars-component'
 import Select from 'react-select'
 
 import { LOCATION_ICON } from 'utils/icons'
-import Comments from './Comments'
+import AllAvis from './AllAvis'
 import { RENT_DURATION } from 'utils/constants'
 import { getAnnonceDetail, getUserAnnonceOwner, reserveAnnonce } from 'services/annonce'
 import { getImage } from 'utils'
 import useAuth from 'hooks/useAuth'
-import { getDetailReservation, getMyReservations } from 'services/reservation'
+import { getDetailReservation } from 'services/reservation'
 
 const Post = () => {
   const { id } = useParams()
@@ -19,15 +18,16 @@ const Post = () => {
   const [reservationDetail, setReservationDetail] = useState(null)
   const particulier_id = annonce?.particulier_id
 
-  // const status_reservation = reservationDetail?.status
   const status_reservation = reservationDetail?.find(r => r.client_id === user_id)?.status
   const reservation_count = reservationDetail?.length
+  const isReservedByMe = status_reservation === 'accepter'
 
   useEffect(() => {
     if (id) {
       getAnnonceDetail(id).then(post => setAnnonce(post))
       if (isClient) getDetailReservation(id).then(res => setReservationDetail(res))
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
   useEffect(() => {
     if (particulier_id) {
@@ -36,9 +36,7 @@ const Post = () => {
   }, [particulier_id])
 
   if (!annonce) return null
-  const { title, description, rating, prix = 300, disponible = true, ville, image, date_debut, date_fin } = annonce
-
-  const ratingChanged = newRating => {}
+  const { title, description, prix = 300, disponible = true, ville, image, date_debut, date_fin } = annonce
 
   const onReserve = async () => {
     const reservation = { annonce_id: id, date_debut, date_fin }
@@ -60,10 +58,9 @@ const Post = () => {
               <h5>
                 <p>{description}</p>
               </h5>
-              <Comments />
+              <AllAvis isReservedByMe={isReservedByMe} />
             </div>
           </div>
-          <ReactStars value={rating || 2} count={5} onChange={ratingChanged} size={24} activeColor="#ffd700" />
           <div className="d-flex align-items-start">
             <LOCATION_ICON /> <span className="h5">{ville}</span>
           </div>

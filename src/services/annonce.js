@@ -88,6 +88,7 @@ export const archiveAnnonce = async (id, annonce) => {
   const isArchive = annonce.status == 1 ? true : false
   try {
     const { data } = await http.put(`/annonce/update/${id}`, annonce, HEADERS)
+    toast.success('Annonce archivée avec succès')
     return data
   } catch (error) {
     toast.error(`Error ${isArchive ? 'arhiving' : 'unarchiving'} annonce`)
@@ -98,9 +99,30 @@ export const archiveAnnonce = async (id, annonce) => {
 export const deleteAnnonce = async id => {
   try {
     const { data } = await http.delete(`/annonce/delete/${id}`, HEADERS)
+    toast.success('Annonce supprimée avec succès')
     return data
   } catch (error) {
     toast.error(`Error deleting annonce with id ${id}`)
+    return null
+  }
+}
+export const addAvisAnnonce = async avis => {
+  try {
+    const { data } = await http.post('/avis/annonce/add', avis, HEADERS)
+    toast.success('Avis sur cette Annonce ajoutée avec succès')
+    return data
+  } catch (error) {
+    toast.error(`Error adding avis to annonce`)
+    return null
+  }
+}
+
+export const getAllAvisAnnonce = async id => {
+  try {
+    const { data } = await http.get(`/avis/annonce/${id}`, HEADERS)
+    return data?.avis
+  } catch (error) {
+    toast.error(`Error getting avis for this annonce`)
     return null
   }
 }
