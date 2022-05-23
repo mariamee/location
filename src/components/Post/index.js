@@ -26,7 +26,7 @@ const Post = () => {
   useEffect(() => {
     if (id) {
       getAnnonceDetail(id).then(post => setAnnonce(post))
-      getDetailReservation(id).then(res => setReservationDetail(res))
+      if (isClient) getDetailReservation(id).then(res => setReservationDetail(res))
     }
   }, [id])
   useEffect(() => {
@@ -50,58 +50,61 @@ const Post = () => {
 
   return (
     <div className="container">
-    <h3>{title}</h3>
-    <div className="row">
-      <div className="flex">
-        <div>
-          <img className="img-fluid rounded" src={getImage(image) || '/no_image.jpeg'} alt="post" />
-          <div className=' '>
-            <div className='mt-5 h4 fw-bold text-warning '>Description</div>
-             <h5><p>{description}</p></h5>
-          <Comments />
-        </div>
-        
-        </div>
-        <ReactStars value={rating || 2} count={5} onChange={ratingChanged} size={24} activeColor="#ffd700" />
+      <h3>{title}</h3>
+      <div className="row">
+        <div className="flex">
+          <div>
+            <img className="img-fluid rounded" src={getImage(image) || '/no_image.jpeg'} alt="post" />
+            <div className=" ">
+              <div className="mt-5 h4 fw-bold text-warning ">Description</div>
+              <h5>
+                <p>{description}</p>
+              </h5>
+              <Comments />
+            </div>
+          </div>
+          <ReactStars value={rating || 2} count={5} onChange={ratingChanged} size={24} activeColor="#ffd700" />
           <div className="d-flex align-items-start">
             <LOCATION_ICON /> <span className="h5">{ville}</span>
           </div>
-        <div className="mt-2 border p-2">
-          <span className="h5 text-danger">{prix} DH</span>
-          <div className="d-flex align-items-center">
-            <div className="flex-fill">
-              <span className={'text-' + (disponible ? 'success' : 'danger')}>{disponible ? '' : 'Non '}Disponible</span>
-            </div>
-
-            <Select className="flex-fill" placeholder="Durée" id="disponibity" options={RENT_DURATION} />
-          </div>
-          <div className="p-2 text-center">
-            <div>
-              <button className="btn btn-primary my-3">Ajouter au favoris</button>
-            </div>
-            {isClient && (
-              <div>
-                <button className="btn btn-success px-5" onClick={onReserve}>
-                  {status_reservation || 'Reserver'} {reservation_count && <strong className="text-warning">{reservation_count}</strong>}
-                </button>
+          <div className="mt-2 border p-2">
+            <span className="h5 text-danger">{prix} DH</span>
+            <div className="d-flex align-items-center">
+              <div className="flex-fill">
+                <span className={'text-' + (disponible ? 'success' : 'danger')}>{disponible ? '' : 'Non '}Disponible</span>
               </div>
-            )}
-          </div>
-        </div>
-        <div className="mt-2 p-2 border">
-          <h4>Annonce de:</h4>
-          <div className="d-flex align-items-start">
-            <div className="media-body ms-2 d-flex flex-column justify-content-cetner align-items-center">
-              <h6 className="text-primary mb-2">{userAnnonce?.name}</h6>
-              <h6><p>de {userAnnonce?.ville}</p></h6>
+
+              <Select className="flex-fill" placeholder="Durée" id="disponibity" options={RENT_DURATION} />
+            </div>
+            <div className="p-2 text-center">
+              <div>
+                <button className="btn btn-primary my-3">Ajouter au favoris</button>
+              </div>
+              {isClient && (
+                <div>
+                  <button className="btn btn-success px-5" onClick={onReserve}>
+                    {status_reservation || 'Reserver'} {reservation_count && <strong className="text-warning">{reservation_count}</strong>}
+                  </button>
+                </div>
+              )}
             </div>
           </div>
-          <div className="text-center">
-            <button className="btn btn-secondary mt-2">Message</button>
+          <div className="mt-2 p-2 border">
+            <h4>Annonce de:</h4>
+            <div className="d-flex align-items-start">
+              <div className="media-body ms-2 d-flex flex-column justify-content-cetner align-items-center">
+                <h6 className="text-primary">{userAnnonce?.name}</h6>
+                <h6>
+                  <p>de {userAnnonce?.ville}</p>
+                </h6>
+              </div>
+            </div>
+            <div className="text-center">
+              <button className="btn btn-secondary mt-2">Message</button>
+            </div>
           </div>
         </div>
       </div>
-          </div>
     </div>
   )
 }

@@ -12,6 +12,16 @@ export const getAllAnnonces = async () => {
     return null
   }
 }
+
+export const getFilteredAnnonces = async filter => {
+  try {
+    const { data } = await http.post('/annonces/filter', filter, HEADERS)
+    return data?.annonces
+  } catch (error) {
+    toast.error('Error filtering annonces')
+    return null
+  }
+}
 export const getAnnonceDetail = async id => {
   try {
     const { data } = await http.get(`/annonce/${id}`, HEADERS)
@@ -45,6 +55,7 @@ export const getMyAnnonces = async () => {
 export const addNewAnnonce = async annonce => {
   try {
     const { data } = await http.post('/annonce/add', annonce, HEADERS)
+    toast.success('annonce ajoutée avec succès')
     return data
   } catch (error) {
     toast.error('Error posting annonce')
@@ -55,6 +66,7 @@ export const addNewAnnonce = async annonce => {
 export const editAnnonce = async (annonce, id) => {
   try {
     const { data } = await http.put(`/annonce/update/${id}`, annonce, HEADERS)
+    toast.success('annonce modifiée avec succès')
     return data
   } catch (error) {
     toast.error('Error editing annonce')

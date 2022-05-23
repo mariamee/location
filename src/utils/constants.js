@@ -62,8 +62,8 @@ export const SORT_PRICES = [
 ]
 
 export const DISPONIBILITIES = [
-  { value: 'disponible', label: 'Disponible' },
-  { value: 'indisponible', label: 'Non disponible' },
+  { value: '1', label: 'Disponible' },
+  { value: '0', label: 'Non disponible' },
 ]
 export const ROLE_IDS = {
   ADMIN: '1',
