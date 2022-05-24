@@ -12,7 +12,7 @@ import { getDetailReservation } from 'services/reservation'
 
 const Post = () => {
   const { id } = useParams()
-  const { isClient, user_id } = useAuth()
+  const { isClient, user_id, isPartner } = useAuth()
   const [annonce, setAnnonce] = useState(null)
   const [userAnnonce, setUserAnnonce] = useState(null)
   const [reservationDetail, setReservationDetail] = useState(null)
@@ -21,6 +21,8 @@ const Post = () => {
   const status_reservation = reservationDetail?.find(r => r.client_id === user_id)?.status
   const reservation_count = reservationDetail?.length
   const isReservedByMe = status_reservation === 'accepter'
+
+  const isPartnerAnnonce = isPartner && particulier_id === user_id
 
   useEffect(() => {
     if (id) {
@@ -58,7 +60,7 @@ const Post = () => {
               <h5>
                 <p>{description}</p>
               </h5>
-              <AllAvis isReservedByMe={isReservedByMe} />
+              <AllAvis enableAvis={isPartnerAnnonce || isReservedByMe} />
             </div>
           </div>
           <div className="d-flex align-items-start">

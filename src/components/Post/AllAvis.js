@@ -8,7 +8,7 @@ import useAuth from 'hooks/useAuth'
 import Avis from './Avis'
 import { useParams } from 'react-router-dom'
 
-const AllAvis = ({ isReservedByMe }) => {
+const AllAvis = ({ enableAvis }) => {
   const { user_id, user } = useAuth()
   const { id } = useParams()
 
@@ -44,8 +44,8 @@ const AllAvis = ({ isReservedByMe }) => {
   return (
     <>
       <div>
-        <button disabled={!isReservedByMe} className="btn btn-primary mt-5" onClick={() => setIsOpen(true)}>
-          Ajouter commentaire et note <span className="text-danger">{isReservedByMe ? '' : '(reservation requise)'}</span>
+        <button disabled={!enableAvis} className="btn btn-primary mt-5" onClick={() => setIsOpen(true)}>
+          Ajouter commentaire et note <span className="text-danger">{enableAvis ? '' : '(reservation requise)'}</span>
         </button>
         <div className="h4 text-warning fw-bold">Commentaires</div>
         {allAvis?.map(avis => (
