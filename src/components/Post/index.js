@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Select from 'react-select'
+import Modal from 'react-modal'
+import DatePicker from 'react-datepicker'
+import moment from 'moment'
 
 import { LOCATION_ICON } from 'utils/icons'
 import AllAvis from './AllAvis'
@@ -9,20 +12,37 @@ import { getAnnonceDetail, getUserAnnonceOwner, reserveAnnonce } from 'services/
 import { getImage } from 'utils'
 import useAuth from 'hooks/useAuth'
 import { getDetailReservation } from 'services/reservation'
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    height: '50%',
+  },
+}
 
 const Post = () => {
   const { id } = useParams()
   const { isClient, user_id, isPartner } = useAuth()
+  const [isOpen, setIsOpen] = useState(false)
   const [annonce, setAnnonce] = useState(null)
   const [userAnnonce, setUserAnnonce] = useState(null)
   const [reservationDetail, setReservationDetail] = useState(null)
+  const [date_debut_reservation, setDate_debut_reservation] = useState(new Date())
+  const [date_fin_reservation, setDate_fin_reservation] = useState(new Date())
   const particulier_id = annonce?.particulier_id
 
+  const reservedAnnonce = reservationDetail?.find(r => r.status === 'accepter')
   const status_reservation = reservationDetail?.find(r => r.client_id === user_id)?.status
   const reservation_count = reservationDetail?.length
   const isReservedByMe = status_reservation === 'accepter'
 
   const isPartnerAnnonce = isPartner && particulier_id === user_id
+  const enableAvis = new Date(reservedAnnonce?.date_fin).getTime() < new Date().getTime() && (isPartnerAnnonce || isReservedByMe)
+  const enableReserveButton = !reservedAnnonce && status_reservation !== 'en attente' && reservation_count < 3
 
   useEffect(() => {
     if (id) {
@@ -30,7 +50,7 @@ const Post = () => {
       if (isClient) getDetailReservation(id).then(res => setReservationDetail(res))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id])
+  }, [id, isClient])
   useEffect(() => {
     if (particulier_id) {
       getUserAnnonceOwner(particulier_id).then(user => setUserAnnonce(user))
@@ -38,15 +58,22 @@ const Post = () => {
   }, [particulier_id])
 
   if (!annonce) return null
-  const { title, description, prix = 300, disponible = true, ville, image, date_debut, date_fin } = annonce
+  const { title, description, prix, disponible = 1, ville, image } = annonce
 
   const onReserve = async () => {
-    const reservation = { annonce_id: id, date_debut, date_fin }
+    const reservation = {
+      annonce_id: id,
+      date_debut: moment(date_debut_reservation).format('YYYY-MM-DD'),
+      date_fin: moment(date_fin_reservation).format('YYYY-MM-DD'),
+    }
     const isReserved = await reserveAnnonce(reservation)
     if (isReserved) {
+      setIsOpen(false)
       getDetailReservation(id).then(res => setReservationDetail(res))
     }
   }
+
+  const onClose = () => setIsOpen(false)
 
   return (
     <div className="container">
@@ -60,7 +87,7 @@ const Post = () => {
               <h5>
                 <p>{description}</p>
               </h5>
-              <AllAvis enableAvis={isPartnerAnnonce || isReservedByMe} />
+              <AllAvis enableAvis={enableAvis} />
             </div>
           </div>
           <div className="d-flex align-items-start">
@@ -81,7 +108,7 @@ const Post = () => {
               </div>
               {isClient && (
                 <div>
-                  <button className="btn btn-success px-5" onClick={onReserve}>
+                  <button disabled={!enableReserveButton} className="btn btn-success px-5" onClick={() => setIsOpen(true)}>
                     {status_reservation || 'Reserver'} {reservation_count && <strong className="text-warning">{reservation_count}</strong>}
                   </button>
                 </div>
@@ -104,6 +131,25 @@ const Post = () => {
           </div>
         </div>
       </div>
+      <Modal isOpen={isOpen} onRequestClose={onClose} style={customStyles} contentLabel="Example Modal">
+        <div className="d-fex align-items-end h-100">
+          <div className="d-flex justify-content-around mb-5">
+            <div className=" flex-column pt-2 ms-0 ">
+              <label htmlFor="date_debut">Date debut</label>
+              <DatePicker selected={date_debut_reservation} onChange={date => setDate_debut_reservation(date)} />
+            </div>
+            <div className="mt-2 ml-0 flex">
+              <label htmlFor="date_fin">Date fin</label>
+              <DatePicker selected={date_fin_reservation} onChange={date => setDate_fin_reservation(date)} />
+            </div>
+          </div>
+          <div className="text-center">
+            <button className="btn btn-success" onClick={onReserve}>
+              Reserver
+            </button>
+          </div>
+        </div>
+      </Modal>
     </div>
   )
 }
