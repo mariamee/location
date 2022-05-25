@@ -5,7 +5,7 @@ import { acceptReservation, refuseReservation } from 'services/reservation'
 import { STYLE_MODAL } from 'utils/constants'
 // import useAuth from 'hooks/useAuth'
 
-const ReservationsOperation = ({ id, annonce, setAnnonces, reservations, setReservations }) => {
+const ReservationsOperation = ({ reservations, setReservations }) => {
   const [isOpen, setIsOpen] = useState(false)
   //   const { user } = useAuth()
 
@@ -38,7 +38,11 @@ const ReservationsOperation = ({ id, annonce, setAnnonces, reservations, setRese
             <div className="">
               <span className="h3">Client ID </span>
               <span className="text-light bg-info me-5 h3 p-2">{reservation.client_id}</span>
-              <button className="btn btn-success btn-sm me-3" onClick={() => onAccept(reservation.id)}>
+              <span className="text-primary me-2">Debut</span>
+              <span className="text-primary me-2">{reservation?.date_debut}</span>
+              <span className="text-danger me-2">Fin</span>
+              <span className="text-danger me-2">{reservation?.date_fin}</span>
+              <button className="btn btn-success btn-sm" onClick={() => onAccept(reservation.id)}>
                 Accepter
               </button>
               <button className="btn btn-danger btn-sm" onClick={() => onRefuse(reservation.id)}>
