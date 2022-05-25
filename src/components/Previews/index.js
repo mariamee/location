@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { HEART } from 'utils/icons'
 import useAnnonces from 'hooks/useAnnonces'
 import Preview from './Preview'
 import { getAllAnnonces } from 'services/annonce'
@@ -18,7 +17,6 @@ const Previews = () => {
       <div className="d-flex flex-wrap">
         {annonces?.map(annonce => (
           <Preview key={annonce.id} {...annonce} />
-  
         ))}
       </div>
     </div>

@@ -26,7 +26,7 @@ const NewAdvert = () => {
   const [date_debut, setDate_debut] = useState(new Date())
   const [date_fin, setDate_fin] = useState(new Date())
   const [image, setImage] = useState(null)
-  const [duree, setDuree] = useState(7)
+  const [duree, setDuree] = useState(0)
 
   const onSubmit = async e => {
     e.preventDefault()
@@ -46,13 +46,17 @@ const NewAdvert = () => {
 
     const isPosted = await addNewAnnonce(formData)
     if (isPosted?.id) {
-      const premiumPayload = {
-        annonce_id: isPosted?.id,
-        date_debut: moment(date_debut).format('YYYY-MM-DD'),
-        date_fin: moment(date_debut).add(duree, 'days').format('YYYY-MM-DD'),
+      if (duree) {
+        const premiumPayload = {
+          annonce_id: isPosted?.id,
+          date_debut: moment(date_debut).format('YYYY-MM-DD'),
+          date_fin: moment(date_debut).add(duree, 'days').format('YYYY-MM-DD'),
+        }
+        const isAddedToPremium = await addPremiumToAnnonce(premiumPayload)
+        if (isAddedToPremium) navigate('/')
+      } else {
+        navigate('/')
       }
-      const isAddedToPremium = await addPremiumToAnnonce(premiumPayload)
-      if (isAddedToPremium) navigate('/')
     }
   }
 
@@ -108,30 +112,43 @@ const NewAdvert = () => {
 
         <div className="flex-column pt-2">
           <label htmlFor="price">Tarif en DH/Jour</label>
-          <input class="form-control" type="number" id="prix" value={prix} onChange={e => setPrix(e.target.value)} />
+          <input className="form-control" type="number" id="prix" value={prix} onChange={e => setPrix(e.target.value)} />
         </div>
         <div className="flex-column pt-2">
           <label htmlFor="marque">Marque</label>
-          <input class="form-control" id="marque" value={marque} onChange={e => setMarque(e.target.value)} />
+          <input className="form-control" id="marque" value={marque} onChange={e => setMarque(e.target.value)} />
         </div>
         <div className="h5 text-info mt-2">Choisissez l'option annonce premium</div>
         <div className="mt-2">Cette option vous permettra d'afficher votre annonce sur la première page pendant :</div>
 
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="week" id="week" checked={duree === 7} onClick={() => setDuree(7)} />
-          <label class="form-check-label" for="week">
+        <div className="form-check">
+          <input className="form-check-input" type="radio" name="none" id="none" checked={duree === 0} onClick={() => setDuree(0)} />
+          <label className="form-check-label" htmlFor="none">
+            Pas Premium
+          </label>
+        </div>
+        <div className="form-check">
+          <input className="form-check-input" type="radio" name="week" id="week" checked={duree === 7} onClick={() => setDuree(7)} />
+          <label className="form-check-label" htmlFor="week">
             une semaine
           </label>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="fifteen" id="fifteen" checked={duree === 15} onClick={() => setDuree(15)} />
-          <label class="form-check-label" for="fifteen">
+        <div className="form-check">
+          <input
+            className="form-check-input"
+            type="radio"
+            name="fifteen"
+            id="fifteen"
+            checked={duree === 15}
+            onClick={() => setDuree(15)}
+          />
+          <label className="form-check-label" htmlFor="fifteen">
             15 jours
           </label>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="month" id="month" checked={duree === 30} onClick={() => setDuree(30)} />
-          <label class="form-check-label" for="month">
+        <div className="form-check">
+          <input className="form-check-input" type="radio" name="month" id="month" checked={duree === 30} onClick={() => setDuree(30)} />
+          <label className="form-check-label" htmlFor="month">
             Un mois
           </label>
         </div>

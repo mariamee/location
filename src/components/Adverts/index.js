@@ -1,9 +1,7 @@
 import Preview from 'components/Previews/Preview'
 import React, { useEffect, useState } from 'react'
-import { getPremiumAnnonces } from 'services/annonce'
 
-// import { ADS } from '../../utils/constants'
-import Advert from './Advert'
+import { getPremiumAnnonces } from 'services/annonce'
 
 const Adverts = () => {
   const [premAnnonces, setPremAnnonces] = useState([])
