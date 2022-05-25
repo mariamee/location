@@ -47,10 +47,10 @@ const Post = () => {
   useEffect(() => {
     if (id) {
       getAnnonceDetail(id).then(post => setAnnonce(post))
-      if (isClient) getDetailReservation(id).then(res => setReservationDetail(res))
+      getDetailReservation(id).then(res => setReservationDetail(res))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, isClient])
+  }, [id])
   useEffect(() => {
     if (particulier_id) {
       getUserAnnonceOwner(particulier_id).then(user => setUserAnnonce(user))
