@@ -55,12 +55,6 @@ const PersonalInformation = () => {
             <div className="text-dark">Mes Messages</div>
           </div>
         </Link>
-        <Link to="/myadverts" style={{ textDecoration: 'none' }}>
-          <div className="text-center">
-            <LOCATIONS />
-            <div className="text-dark">Mes Annonces</div>
-          </div>
-        </Link>
       </form>
       <form className="border border-dark  rounded p-4">
         <h3 className="text-center">Informations personnels</h3>

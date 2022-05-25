@@ -1,4 +1,5 @@
 import React from 'react'
+import { HEART } from 'utils/icons'
 import { Link } from 'react-router-dom'
 import { getImage } from 'utils'
 
@@ -12,7 +13,7 @@ const Preview = ({ title, prix, image, id, ville }) => {
           <img
             src={getImage(image) || '/no_image.jpeg'}
             alt={title}
-            className="card-img-top border border-2 border-dark rounded-3"
+            className="card-img-top  rounded-3"
             style={{ width: '10rem', height: '10rem' }}
           />
           {/* <div className="position-absolute top-0 end-0">
@@ -25,6 +26,11 @@ const Preview = ({ title, prix, image, id, ville }) => {
             <span className="text-primary">{prix}</span> DH/jour
           </p>
           <p className="card-text">{ville}</p>
+          <small>
+            <button className="btn btn-danger fw-bold h2 text-light mt-5">
+              + Ajouter au favoris <HEART />
+            </button>
+          </small>
         </div>
       </div>
     </Link>
