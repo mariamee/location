@@ -37,7 +37,7 @@ const Register = () => {
   const isEnabled = name && email && password && ville?.value && addresse && telephone && cin && role?.value
 
   return (
-    <div class="inner">
+    <div class="inner mt-5">
       <h1 className="text-center">S'inscrire</h1>
       <form>
         <p className="text-danger small">
