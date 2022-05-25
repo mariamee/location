@@ -10,7 +10,7 @@ import useNeedToBeAuth from 'hooks/useNeedToBeAuth'
 
 const PersonalInformation = () => {
   useNeedToBeAuth()
-  const { isClient } = useAuth()
+  const { isClient, isPartner } = useAuth()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [telephone, setTelephone] = useState('')
@@ -55,6 +55,14 @@ const PersonalInformation = () => {
             <div className="text-dark">Mes Messages</div>
           </div>
         </Link>
+        {isPartner && (
+          <Link to="/myadverts" style={{ textDecoration: 'none' }}>
+            <div className="text-center">
+              <LOCATIONS />
+              <div className="text-dark">Mes Annonces</div>
+            </div>
+          </Link>
+        )}
       </form>
       <form className="border border-dark  rounded p-4">
         <h3 className="text-center">Informations personnels</h3>
