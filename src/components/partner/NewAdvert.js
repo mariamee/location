@@ -5,7 +5,7 @@ import DatePicker from 'react-datepicker'
 import { useNavigate } from 'react-router-dom'
 
 import { CITIES, CATEGORIES } from '../../utils/constants'
-import { addNewAnnonce } from 'services/annonce'
+import { addNewAnnonce, addPremiumToAnnonce } from 'services/annonce'
 
 import useAuth from 'hooks/useAuth'
 import useNeedToBeAuth from 'hooks/useNeedToBeAuth'
@@ -26,6 +26,7 @@ const NewAdvert = () => {
   const [date_debut, setDate_debut] = useState(new Date())
   const [date_fin, setDate_fin] = useState(new Date())
   const [image, setImage] = useState(null)
+  const [duree, setDuree] = useState(7)
 
   const onSubmit = async e => {
     e.preventDefault()
@@ -44,7 +45,15 @@ const NewAdvert = () => {
     formData.append('particulier_id', user_id)
 
     const isPosted = await addNewAnnonce(formData)
-    if (isPosted) navigate('/')
+    if (isPosted?.id) {
+      const premiumPayload = {
+        annonce_id: isPosted?.id,
+        date_debut: moment(date_debut).format('YYYY-MM-DD'),
+        date_fin: moment(date_debut).add(duree, 'days').format('YYYY-MM-DD'),
+      }
+      const isAddedToPremium = await addPremiumToAnnonce(premiumPayload)
+      if (isAddedToPremium) navigate('/')
+    }
   }
 
   const onImageChange = event => {
@@ -107,20 +116,21 @@ const NewAdvert = () => {
         </div>
         <div className="h5 text-info mt-2">Choisissez l'option annonce premium</div>
         <div className="mt-2">Cette option vous permettra d'afficher votre annonce sur la première page pendant :</div>
-        <div className=" form-check pt-2 ">
-          <input class="form-check-input" type="radio" name="Semaine" id="week" value="week" />
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="week" id="week" checked={duree === 7} onClick={() => setDuree(7)} />
           <label class="form-check-label" for="week">
-            Une semaine
+            une semaine
           </label>
         </div>
-        <div className=" form-check pt-2 ">
-          <input class="form-check-input" type="radio" name="15jours" id="days" value="days" />
-          <label class="form-check-label" for="days">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="fifteen" id="fifteen" checked={duree === 15} onClick={() => setDuree(15)} />
+          <label class="form-check-label" for="fifteen">
             15 jours
           </label>
         </div>
-        <div className=" form-check pt-2 ">
-          <input class="form-check-input" type="radio" name="mois" id="month" value="month" />
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="month" id="month" checked={duree === 30} onClick={() => setDuree(30)} />
           <label class="form-check-label" for="month">
             Un mois
           </label>

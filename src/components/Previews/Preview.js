@@ -9,7 +9,7 @@ const Preview = ({ title, prix, image, id, ville }) => {
   return (
     <Link to={`/post/${id}`} className="ms-2 no_decoration">
       <div type="button" className="mx-2 border border-dark rounded-3 px-3 pt-3 m-2 bg-light shadow">
-        <div className="position-relative">
+        <div className="position-relative text-center">
           <img
             src={getImage(image) || '/no_image.jpeg'}
             alt={title}

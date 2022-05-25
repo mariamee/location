@@ -56,7 +56,7 @@ export const addNewAnnonce = async annonce => {
   try {
     const { data } = await http.post('/annonce/add', annonce, HEADERS)
     toast.success('annonce ajoutée avec succès')
-    return data
+    return data?.annonce
   } catch (error) {
     toast.error('Error posting annonce')
     return null
@@ -123,6 +123,24 @@ export const getAllAvisAnnonce = async id => {
     return data?.avis
   } catch (error) {
     toast.error(`Error getting avis for this annonce`)
+    return null
+  }
+}
+export const addPremiumToAnnonce = async body => {
+  try {
+    const { data } = await http.post(`/annonces/add/premium`, body, HEADERS)
+    return data?.premium
+  } catch (error) {
+    toast.error(`Error adding this annonce to premium`)
+    return null
+  }
+}
+export const getPremiumAnnonces = async () => {
+  try {
+    const { data } = await http.get('/annonces/premium', HEADERS)
+    return data?.premium
+  } catch (error) {
+    toast.error(`Error adding this annonce to premium`)
     return null
   }
 }
