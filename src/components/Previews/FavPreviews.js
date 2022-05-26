@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react'
-import useAnnonces from 'hooks/useAnnonces'
+import React, { useEffect, useState } from 'react'
 import Preview from './Preview'
-import { getAllAnnonces } from 'services/annonce'
+import { getAllFavoris } from 'services/favoris'
 
 const FavPreviews = () => {
-  const { annonces, setAnnonces } = useAnnonces()
+  const [favAnnonces, setFavAnnonces] = useState([])
+
   useEffect(() => {
-    getAllAnnonces().then(res => setAnnonces(res))
+    getAllFavoris().then(response => setFavAnnonces(response))
   }, [])
 
-  if (!annonces?.length) return null
+  if (!favAnnonces?.length) return null
 
   return (
     <div className=" p-3 my-4">
       <div className="d-flex flex-wrap">
-        {annonces?.map(annonce => (
+        {favAnnonces?.map(annonce => (
           <Preview key={annonce.id} {...annonce} />
         ))}
       </div>
