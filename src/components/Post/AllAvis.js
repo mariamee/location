@@ -17,6 +17,8 @@ const AllAvis = ({ enableAvis }) => {
   const [newComment, setNewComment] = useState('')
   const [allAvis, setAllAvis] = useState([])
 
+  const isBothCommented = [...new Set(allAvis?.map(a => a?.client_id?.[0]?.id))].length >= 2
+
   useEffect(() => {
     const fetchAllAvis = async () => {
       const res = await getAllAvisAnnonce(id)
@@ -47,10 +49,7 @@ const AllAvis = ({ enableAvis }) => {
         <button disabled={!enableAvis} className="btn btn-primary mt-5" onClick={() => setIsOpen(true)}>
           Ajouter commentaire et note <span className="text-danger">{enableAvis ? '' : '(reservation requise)'}</span>
         </button>
-        <div className="h4 text-warning fw-bold">Commentaires</div>
-        {allAvis?.map(avis => (
-          <Avis key={avis.id} {...avis} />
-        ))}
+        {isBothCommented && allAvis?.map(avis => <Avis key={avis.id} {...avis} />)}
       </div>
       <Modal isOpen={isOpen} onRequestClose={onClose} style={STYLE_MODAL} contentLabel="Example Modal">
         <div className="">
