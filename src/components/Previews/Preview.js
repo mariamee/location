@@ -3,16 +3,27 @@ import { HEART } from 'utils/icons'
 import { Link } from 'react-router-dom'
 import { getImage } from 'utils'
 import { addNewFavoris } from 'services/favoris'
+import { useLocation } from 'react-router-dom'
 
+import useAuth from 'hooks/useAuth'
 // import { HEART_ICON } from 'utils/icons'
 
-const Preview = ({ title, prix, image, id, ville }) => {
+const Preview = ({ title, prix, image, id, ville, isFavoris, setFavAnnonces }) => {
+  const { isClient } = useAuth()
+  const location = useLocation()
+  const isFavorisPath = location?.pathname === '/favorite'
+
   const onAddToFavoris = async () => {
-    addNewFavoris(id)
+    if (!isFavoris) {
+      const idAdded = await addNewFavoris(id)
+      if (idAdded) {
+        setFavAnnonces(prev => [...prev, idAdded])
+      }
+    }
   }
 
   return (
-    <div className="mx-2 border border-dark rounded-3 px-3 pt-3 m-2 bg-light shadow">
+    <div className="mx-2 border border-dark rounded-3 px-3 pt-3 m-2 bg-light shadow" style={{ width: 250 }}>
       <Link to={`/post/${id}`} className="ms-2 no_decoration">
         <div type="button">
           <div className="position-relative text-center">
@@ -22,9 +33,6 @@ const Preview = ({ title, prix, image, id, ville }) => {
               className="card-img-top  rounded-3"
               style={{ width: '10rem', height: '10rem' }}
             />
-            {/* <div className="position-absolute top-0 end-0">
-            <HEART_ICON className="bg-primary" />
-          </div> */}
           </div>
           <div className="card-body text-center text-dark">
             <p className="card-text">{title}</p>
@@ -35,24 +43,13 @@ const Preview = ({ title, prix, image, id, ville }) => {
           </div>
         </div>
       </Link>
-      <button className="btn btn-danger fw-bold h2 text-light mt-2" onClick={onAddToFavoris}>
-        + Ajouter au favoris <HEART />
-      </button>
+      {!isFavorisPath && isClient && (
+        <button className={'btn w-100 fw-bold h2 text-light mt-2 btn-' + (isFavoris ? 'danger' : 'warning')} onClick={onAddToFavoris}>
+          {isFavoris ? 'Favoris ' : 'Ajouter au favoris'} <HEART />
+        </button>
+      )}
     </div>
   )
 }
 
 export default Preview
-
-// 'particulier_id',
-// 'categorie',
-// 'marque',
-// 'prix',
-// 'ville',
-// 'title',
-// 'description',
-// 'date_debut',
-// 'date_fin',
-// 'date_pub',
-// 'disponibilite',
-// 'status'
